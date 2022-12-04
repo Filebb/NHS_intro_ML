@@ -5,11 +5,11 @@
 | Day | Slides                                                                                  |
 |:---:|:----------------------------------------------------------------------------------------|
 |   1 | [Introduction to Machine Learning](https://filebb.github.io/NHS_intro_ML/01_Intro.html) |
-|   2 | [Data Manipulation]()                      |
-|   3 | [Data Visualisation I]()                   |
-|   4 | [Categorical Variables]()                  |
-|   5 | [Relational Data]()                        |
-
+|   2 | [Data Preparation and Feature Engineering]()                                            |
+|   3 | [Regression (part 1)]()                                                                 |
+|   4 | [Classification]()                                                                      |
+|   5 | [Regression (part 2)]()                                                                 |
+     
 
 ## Summary of the course
 
