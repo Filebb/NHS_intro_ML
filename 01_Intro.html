@@ -1,0 +1,1920 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="generator" content="quarto-0.9.483">
+
+  <title>Introduction to Machine Learning</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="01_Intro_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="01_Intro_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="01_Intro_files/libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link href="01_Intro_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="01_Intro_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="01_Intro_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="01_Intro_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-captioned.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-captioned) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-captioned.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-captioned .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-captioned .callout-caption  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-captioned.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-captioned.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-caption {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-caption {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-caption {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-captioned .callout-body > .callout-content > :last-child {
+    margin-bottom: 0.5rem;
+  }
+
+  .callout.callout-captioned .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-captioned) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-caption {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-caption {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-caption {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-caption {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-caption {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+<script src="01_Intro_files\libs\clipboard\clipboard.min.js"></script>
+<script src="01_Intro_files\libs\quarto-html\tabby.min.js"></script>
+<script src="01_Intro_files\libs\quarto-html\popper.min.js"></script>
+<script src="01_Intro_files\libs\quarto-html\tippy.umd.min.js"></script>
+<link href="01_Intro_files\libs\quarto-html\tippy.css" rel="stylesheet">
+<link href="01_Intro_files\libs\quarto-html\quarto-html.min.css" rel="stylesheet">
+<link href="01_Intro_files\libs\quarto-html\quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="center">
+  <h1 class="title">Introduction to Machine Learning</h1>
+  <p class="subtitle">Fundamentals of Machine Learning for NHS using R</p>
+</section>
+
+<section id="disclaimer" class="slide level2">
+<h2>Disclaimer</h2>
+<div>
+<ul>
+<li class="fragment"><p>Ask question, always!</p></li>
+<li class="fragment"><p>This morning we will try to understand.</p></li>
+<li class="fragment"><p>There will be some maths, but we are not going to prove theorems! You only need to pay attention and the only maths that you need is substituting numbers in formulas.</p></li>
+<li class="fragment"><p>And if something is unclear, ask questions!</p></li>
+<li class="fragment"><p>Oh… I almost forgot…</p></li>
+</ul>
+</div>
+</section>
+<section id="ask-questions" class="title-slide slide level1 center">
+<h1>Ask questions!</h1>
+
+</section>
+
+<section>
+<section id="i-will-start-with-a-question-what-is-machine-learning" class="title-slide slide level1 center">
+<h1>I will start with a question: What is Machine Learning?</h1>
+<div class="cell">
+
+</div>
+</section>
+<section id="machine-learning-is" class="slide level2" data-background-image="Img\machine_learning.jpg" data-background-opacity="0.2">
+<h2>Machine Learning is…</h2>
+<blockquote>
+<p>Field of study that gives computers the ability to learn without being explicitly programmed</p>
+</blockquote>
+<p>Arthur Samuel is credited for this definition, but there is no source of it!</p>
+
+<aside><div>
+<p>See <a href="https://datascience.stackexchange.com/questions/37078/source-of-arthur-samuels-definition-of-machine-learning">Arthur Samuel’s definition of machine learning</a>.</p>
+<p><a href="https://www.freepik.com/free-photo/ai-technology-brain-background-digital-transformation-concept_17122619.htm#query=machine%20learning&amp;position=1&amp;from_view=keyword">Image by rawpixel.com</a> on Freepik</p>
+</div></aside></section></section>
+<section>
+<section id="opinionated-quick-history" class="title-slide slide level1 center">
+<h1>Opinionated Quick History</h1>
+
+</section>
+<section id="arthur-samuel" class="slide level2 scrollable smaller">
+<h2>Arthur Samuel</h2>
+<div class="columns">
+<div class="column" style="width:80%;">
+<ul>
+<li><p>Was a pioneer of artificial-intelligence research</p></li>
+<li><p>In 1959, while working at IBM, he published a paper that popularized the term <em>machine learning</em></p></li>
+</ul>
+<blockquote>
+<p>Programming computers to learn from experience should eventually eliminate the need for much of this detailed programming effort.</p>
+</blockquote>
+<blockquote>
+<p>A computer can be programmed so that it will learn to play a better game of checkers than can be played by the person who wrote the program.</p>
+</blockquote>
+<p><img data-src="Img/Checkers.jpg"></p>
+</div><div class="column" style="width:20%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Img\arthur_samuel.jpg"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<aside><div>
+<p>References:</p>
+<ul>
+<li><p>A. L. Samuel, <a href="https://ieeexplore.ieee.org/document/5392560">Some Studies in Machine Learning Using the Game of Checkers,</a> in <em>IBM Journal of Research and Development</em>, vol.&nbsp;3, no. 3, pp.&nbsp;210-229, July 1959, doi: 10.1147/rd.33.0210.</p></li>
+<li><p>A. L. Samuel, <a href="https://ieeexplore.ieee.org/document/5391906">Some Studies in Machine Learning Using the Game of Checkers. II—Recent Progress,</a> in <em>IBM Journal of Research and Development</em>, vol.&nbsp;11, no. 6, pp.&nbsp;601-617, Nov.&nbsp;1967, doi: 10.1147/rd.116.0601.</p></li>
+<li><p><a href="https://en.wikipedia.org/wiki/Arthur_Samuel_(computer_scientist)">Arthur Samuel</a> on Wikipedia</p></li>
+</ul>
+</div></aside></section>
+<section id="deep-blue-1996-1997" class="slide level2 scrollable smaller">
+<h2>Deep Blue (1996-1997)</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-right">
+<figure>
+<p><img data-src="Img/deep_blue.jpg"></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-left">
+<figure>
+<p><img data-src="Img/garry_kasparov.jpg"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li><p>February 1996, first computer program to defeat a world champion in a classical game under tournament regulations (Kasparov–Deep Blue 4–2)</p></li>
+<li><p>March 1997, first computer program to defeat a world champion in a match under tournament regulations (Deep Blue–Kasparov 3½–2½)</p></li>
+</ul>
+
+<aside><div>
+<p>References:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Deep_Blue_versus_Garry_Kasparov">Deep Blue versus Garry Kasparov</a> on Wikipedia</li>
+</ul>
+</div></aside></section>
+<section id="alphago-2016" class="slide level2 scrollable smaller">
+<h2>AlphaGo (2016)</h2>
+
+
+<img data-src="Img/alpha_go.jpg" class="r-stretch quarto-figure-center"><aside><div>
+<p>References:</p>
+<ul>
+<li><p>BBC News, <a href="https://www.bbc.co.uk/news/technology-35785875">Artificial intelligence: Google’s AlphaGo beats Go master Lee Se-dol</a></p></li>
+<li><p>DeepMind, <a href="https://www.youtube.com/watch?v=WXuK6gekU1Y&amp;t=4167s">AlphaGo - The Movie</a> award winning documentary</p></li>
+<li><p><a href="https://en.wikipedia.org/wiki/AlphaGo_versus_Lee_Sedol">AlphaGo versus Lee Sedol</a> on Wikipedia</p></li>
+</ul>
+</div></aside></section></section>
+<section>
+<section id="back-to-our-question-what-is-machine-learning" class="title-slide slide level1 center">
+<h1>Back to our Question! What is Machine Learning?</h1>
+
+</section>
+<section id="another-definition" class="slide level2">
+<h2>Another Definition</h2>
+<div class="columns">
+<div class="column" style="width:75%;">
+<blockquote>
+<p>A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P if its performance at tasks in T, as measured by P, improves with experience E</p>
+</blockquote>
+</div><div class="column" style="width:25%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Img\mlbook_mitchell.gif" height="300"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<aside><div>
+<p>References:</p>
+<ul>
+<li>Tom Mitchell, <a href="http://www.cs.cmu.edu/~tom/mlbook.html">Machine Learning</a>, McGraw Hill, 1997</li>
+</ul>
+</div></aside></section>
+<section id="section" class="slide level2">
+<h2></h2>
+
+
+<img data-src="Img/algorithms_data_features.jpg" class="r-stretch"><aside><div>
+<p>Image Credit: Vasily Zubarev, <a href="https://vas3k.com/blog/machine_learning/">Machine Learning for Everyone</a></p>
+</div></aside></section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Img\ai_ml_nn_dl.jpg" height="600"></p>
+</figure>
+</div>
+</div>
+</div>
+
+<aside><div>
+<p>Image Credit: Vasily Zubarev, <a href="https://vas3k.com/blog/machine_learning/">Machine Learning for Everyone</a></p>
+</div></aside></section>
+<section id="so-what-is-machine-learning" class="slide level2">
+<h2>So What is Machine Learning?</h2>
+<blockquote>
+<p>The term <em>machine learning</em> refers to the automated detection of meaningful patterns in data.</p>
+</blockquote>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Img\big_data_wave.jpg" height="300"></p>
+</figure>
+</div>
+</div>
+</div>
+
+<aside><div>
+<p>References:</p>
+<ul>
+<li><p>Shai Shalev-Shwartz and Shai Ben-David, <em>Understanding Machine Learning</em>, 2014</p></li>
+<li><p>Image Credit <a href="https://www.meetcortex.com/blog/3-easy-steps-to-finding-patterns-in-your-big-data">Cortex</a></p></li>
+</ul>
+</div></aside></section>
+<section id="machine-learning-applications-we-may-use-everyday" class="slide level2 smaller">
+<h2>Machine Learning Applications We May Use Everyday</h2>
+<ul>
+<li><p>Email spam and malware filters (Gmail, Outlook, …)</p></li>
+<li><p>Commute estimation (Google Maps, Waze, …)</p></li>
+<li><p>Fraud detection (banking)</p></li>
+<li><p>Online customer support (chatbots)</p></li>
+<li><p>Image recognition (Facebook, Pinterest, …)</p></li>
+<li><p>Search engine results refining (Google)</p></li>
+<li><p>Product reccomendation (Amazon)</p></li>
+<li><p>Healthcare</p></li>
+<li><p>Virtual personal smart assistants (Alexa, Cortana, Google Assistant, Siri)</p></li>
+</ul>
+<p>…</p>
+</section></section>
+<section>
+<section id="supervised-and-unsupervised-learning" class="title-slide slide level1 center">
+<h1>Supervised and Unsupervised Learning</h1>
+
+</section>
+<section id="learning-settings" class="slide level2 smaller">
+<h2>Learning Settings</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Learning Problems</strong></p>
+<ul>
+<li>Supervised Learning</li>
+<li>Unsupervised Learning</li>
+<li>Reinforcement Learning</li>
+</ul>
+<p><strong>Statistical Inference</strong></p>
+<ul>
+<li>Inductive Learning</li>
+<li>Deductive Learning</li>
+<li>Transductive Learning</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>Hybrid Learning Problems</strong></p>
+<ul>
+<li>Semi Supervised Learning</li>
+<li>Self Supervised Learning</li>
+<li>Multi Instance Learning</li>
+</ul>
+<p><strong>Learning Techniques</strong></p>
+<ul>
+<li>Multi Task Learning</li>
+<li>Active Learning</li>
+<li>Online Learning</li>
+<li>Transfer Learning</li>
+<li>Ensemble Learning</li>
+</ul>
+</div>
+</div>
+
+<aside><div>
+<p>Jason Brownlee, <a href="https://machinelearningmastery.com/types-of-learning-in-machine-learning/">Different Types of Learning in Machine Learning</a></p>
+</div></aside></section>
+<section id="section-2" class="slide level2 scrollable">
+<h2></h2>
+
+
+<img data-src="Img/types_of_machine_learning.jpg" class="r-stretch quarto-figure-center"><aside><div>
+<p>Image Credit: Vasily Zubarev, <a href="https://vas3k.com/blog/machine_learning/">Machine Learning for Everyone</a></p>
+</div></aside></section>
+<section id="supervised-vs-unsupervised-learning" class="slide level2">
+<h2>Supervised vs Unsupervised Learning</h2>
+<ul>
+<li><p>In <strong>supervised learning</strong> we are given a dataset and already know what our correct output should look like, assuming that there is a relationship between the input and the output.</p></li>
+<li><p>In <strong>unsupervised learning</strong> we have no idea what our results should look like. Unsupervised methods try to capture patterns without knowing how these patterns look like.</p></li>
+</ul>
+</section>
+<section id="supervised_unsupervised" class="slide level2 scrollable">
+<h2></h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Img\supervised_unsupervised.jpg" height="900"></p>
+</figure>
+</div>
+</div>
+</div>
+
+<aside><div>
+<p>Image Credit: Vasily Zubarev, <a href="https://vas3k.com/blog/machine_learning/">Machine Learning for Everyone</a></p>
+</div></aside></section>
+<section id="supervised-vs-unsupervised-learning-1" class="slide level2">
+<h2>Supervised vs Unsupervised Learning</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Img\supervised.png" width="370" height="400"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Img\unsupervised.png" width="370" height="400"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="in-essence" class="slide level2">
+<h2>In Essence</h2>
+<ul>
+<li><p><strong>Supervised learning</strong> wants to build predictive models</p></li>
+<li><p><strong>Unsupervised learning</strong> wants to build descriptive models</p></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Img\supervised_and_unsupervised.jpg" height="250"></p>
+</figure>
+</div>
+</div>
+</div>
+
+<aside><div>
+<p>Bradley Boehmke and Brandon M. Greenwell, <em>Hands-On Machine Learning with R</em></p>
+<p>Image credit <a href="https://www.javatpoint.com/difference-between-supervised-and-unsupervised-learning">java T point</a></p>
+</div></aside></section></section>
+<section id="in-this-course" class="title-slide slide level1 center">
+<h1>In This Course</h1>
+<p>We will talk ONLY about supervised learning techniques</p>
+</section>
+
+<section>
+<section id="some-maths" class="title-slide slide level1 center" data-background-image="Img\math_fear.jpg" data-background-opacity="0.1">
+<h1>Some Maths</h1>
+<p>about supervised learning</p>
+<p><br> <br> <br></p>
+<p><a href="https://www.etutorworld.com/blog/online-tutoring-to-overcome-fear-of-math/">Image Credit</a></p>
+</section>
+<section id="what-are-we-actually-trying-to-do" class="slide level2">
+<h2>What Are We Actually Trying to Do?</h2>
+<p>In supervised learning we are assuming that there is a relationship between <em>input</em> (usually denoted as <span class="math inline">\(X\)</span>) and <em>output</em> (usually denoted as <span class="math inline">\(Y\)</span>), and we want to express it in terms of a <strong>mathematical function</strong>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Img\maths_dance.png" width="825" height="275"></p>
+</figure>
+</div>
+</div>
+</div>
+
+<aside><div>
+<p>Maths Dance Moves from <a href="https://www.imaginary.org/gallery/maths-dance-moves">Imaginary</a></p>
+</div></aside></section>
+<section id="what-is-a-mathematical-function" class="slide level2">
+<h2>What is a (Mathematical) Function?</h2>
+<p>Given two sets, a <strong>function</strong> is a relationship that associates to each element of the first set, <em>one and only one</em> element of the second set.</p>
+<p>If <span class="math inline">\(f\)</span> is a function from the set <span class="math inline">\(X\)</span> to the set <span class="math inline">\(Y\)</span> we write</p>
+<p><span class="math display">\[f: X \to Y\]</span></p>
+<p>The element <span class="math inline">\(y\)</span> of <span class="math inline">\(Y\)</span> associated by <span class="math inline">\(f\)</span> to the element <span class="math inline">\(x\)</span> of <span class="math inline">\(X\)</span> is denoted by <span class="math inline">\(f(x)\)</span>. Therefore we write</p>
+<p><span class="math display">\[y = f(x)\]</span></p>
+</section>
+<section id="terminology" class="slide level2">
+<h2>Terminology</h2>
+<p>We said that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are sets, more precisely they are the <em>input</em> and the <em>output</em> set respectively.</p>
+<p>But we will also use <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> also to name the variables.</p>
+<p>Various terms are used interchangeably:</p>
+<ul>
+<li><p><span class="math inline">\(X\)</span>: “independent variable”, “input variable”, “predictor”, “feature”, “attribute”.</p></li>
+<li><p><span class="math inline">\(Y\)</span>: “dependent variable”, “output variable”, “target”, “response”, “outcome”.</p></li>
+</ul>
+</section>
+<section id="hence-we-want-to-find-a-function" class="slide level2">
+<h2>Hence We Want to Find a Function!</h2>
+<p>Start with <span class="math inline">\(N\)</span> input-output pairs of observed data</p>
+<p><span class="math display">\[
+\begin{multline}
+(x^{(1)},y^{(1)}), (x^{(2)},y^{(2)}), \dots, (x^{(N)},y^{(N)}) = \\
+= \left\{(x^{(i)},y^{(i)})\right\}_{i = 1}^N
+\end{multline}
+\]</span></p>
+<p>Problem: find the function <span class="math inline">\(f: X \to Y\)</span> that has generated the observed outputs given the corresponding inputs.</p>
+</section>
+<section id="a-visual-example" class="slide level2 smaller">
+<h2>A Visual Example</h2>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Given the Data…</a></li><li><a href="#tabset-1-2">A Possible Solution</a></li><li><a href="#tabset-1-3">Another Option</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-11-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div id="tabset-1-2">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div id="tabset-1-3">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="another-visual-example" class="slide level2 smaller">
+<h2>Another Visual Example</h2>
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Given the Data…</a></li><li><a href="#tabset-2-2">A Possible Solution</a></li><li><a href="#tabset-2-3">Another Option</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div id="tabset-2-2">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-15-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div id="tabset-2-3">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="so-what-is-the-situation" class="slide level2">
+<h2>So, What is the Situation?</h2>
+<p>We observe <span class="math inline">\(N\)</span> input-output pairs <span class="math inline">\(\left\{(x^{(i)},y^{(i)})\right\}_{i = 1}^N\)</span>.</p>
+<p>We <em>assume</em> that there is some relationship between the predictor <span class="math inline">\(X\)</span> and the response <span class="math inline">\(Y\)</span>, which can be written in the form</p>
+<p><span class="math display">\[Y = f(X) + \varepsilon\]</span></p>
+<p>where <span class="math inline">\(\varepsilon\)</span> is a <em>random error term</em> that is independent of <span class="math inline">\(X\)</span> and “on average” is equal to zero.</p>
+</section>
+<section id="it-can-be-a-little-bit-more-complicated" class="slide level2">
+<h2>It Can Be a Little Bit More Complicated…</h2>
+<p>In general the number of predictors is more than one.</p>
+<p>So instead of having just <span class="math inline">\(X\)</span>, we have <span class="math inline">\(X_1, X_2, \dots, X_m\)</span>.</p>
+<p>Hence we observe tuples rather than pairs</p>
+<p><span class="math display">\[\left\{(x^{(i)}_1, x^{(i)}_2, \dots, x^{(i)}_m,y^{(i)})\right\}_{i = 1}^N\]</span></p>
+<p>Therefore the relationship between input and output is written as</p>
+<p><span class="math display">\[Y = f(X_1, X_2, \dots, X_m) + \varepsilon\]</span></p>
+</section>
+<section id="but-we-can-still-write-it-in-a-simple-form" class="slide level2">
+<h2>But We Can Still Write It in a Simple Form</h2>
+<p>We can write</p>
+<p><span class="math display">\[X = (X_1, X_2, \dots, X_m) \]</span></p>
+<p>Therefore the relationship between input and output is written as</p>
+<p><span class="math display">\[Y = f(X) + \varepsilon\]</span></p>
+<p>and we silently remember that the input can have <span class="math inline">\(m\)</span> dimensions.</p>
+</section>
+<section id="the-problem" class="slide level2">
+<h2>The Problem</h2>
+<p>The problem is simple to state: find <span class="math inline">\(f\)</span>.</p>
+<blockquote>
+<p>In essence, statistical learning refers to a set of approaches for estimating <span class="math inline">\(f\)</span>.</p>
+</blockquote>
+<p>The issue is that we will never find the exact <span class="math inline">\(f\)</span>. Therefore we lower our expectations and we set our goal to find an estimate of <span class="math inline">\(f\)</span>, that we are going to write as <span class="math inline">\(\hat{f}\)</span>.</p>
+
+<aside><div>
+<p>Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani, <em>An Introduction to Statistical Learning: with Applications in R</em> (2nd Edition)</p>
+</div></aside></section>
+<section id="why-estimate-f" class="slide level2 scrollable">
+<h2>Why Estimate <span class="math inline">\(f\)</span>?</h2>
+<ol type="1">
+<li>Make predictions: given new (input) data <span class="math inline">\(X_{\text{new}}\)</span> you want to find</li>
+</ol>
+<p><span class="math display">\[\hat{Y} = \hat{f}(X_{\text{new}})\]</span></p>
+<div class="fragment">
+<ol start="2" type="1">
+<li>Inference
+<ul>
+<li>Which predictors are associated with the response?</li>
+<li>What is the relationship between the response and each predictor?</li>
+<li>Can the relationship between Y and each predictor be adequately summarized using a linear equation, or is the relationship more complicated?</li>
+</ul></li>
+</ol>
+
+</div>
+<aside><div>
+<p>Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani, <em>An Introduction to Statistical Learning: with Applications in R</em> (2nd Edition)</p>
+</div></aside></section></section>
+<section>
+<section id="classification-and-regression" class="title-slide slide level1 center">
+<h1>Classification and Regression</h1>
+
+</section>
+<section id="types-of-variables" class="slide level2">
+<h2>Types of Variables</h2>
+<ul>
+<li><p><strong>Categorical variables</strong> can take a limited number of possible values assigning each observation to a group</p></li>
+<li><p><strong>Numerical variables</strong> can take values within a (possibly unbounded) numerical interval</p></li>
+</ul>
+</section>
+<section id="classification-vs-regression-in-words" class="slide level2">
+<h2>Classification vs Regression (in words)</h2>
+<p>What kind of output we are trying to predict?</p>
+<ul>
+<li><p>In <strong>classification</strong> the objective is to predict a categorical outcome</p></li>
+<li><p>In <strong>regression</strong> the objective is to predict a numerical outcome</p></li>
+</ul>
+<p>However often in classification problems rather than predict a particular class, we often want predict the probability of a particular class.</p>
+</section>
+<section id="classification-vs-regression-in-maths" class="slide level2">
+<h2>Classification vs Regression (in maths)</h2>
+<ul>
+<li>In <strong>classification</strong> the output set is of the form
+<ul>
+<li><span class="math inline">\(Y = \{0, 1\}\)</span> binary classification (2 categories) or</li>
+<li><span class="math inline">\(Y = \{0, 1, 2, ..., K\}\)</span> multinomial classification (more that 2 categories)</li>
+</ul></li>
+<li>In <strong>regression</strong> the output set is of the form
+<ul>
+<li><span class="math inline">\(Y = \mathbb{R}\)</span> all possible (real) numbers</li>
+<li><span class="math inline">\(Y = [a, b]\)</span> all numbers within a certain range (possibly unbounded)</li>
+</ul></li>
+</ul>
+</section>
+<section id="classification-vs-regression-in-pictures" class="slide level2">
+<h2>Classification vs Regression (in pictures)</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Img\classification.png" width="370" height="400"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Img\regression.png" width="370" height="400"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="how-can-we-find-f" class="title-slide slide level1 center">
+<h1>How Can We Find <span class="math inline">\(f\)</span>?</h1>
+
+</section>
+<section id="two-possible-methods" class="slide level2 smaller">
+<h2>Two Possible Methods</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="parametric">Parametric</h3>
+<ol type="1">
+<li><p>Assume that <span class="math inline">\(f\)</span> has a particular functional form depending on a set of parameters.</p></li>
+<li><p>Estimate parameters using observed data.</p></li>
+</ol>
+<div class="fragment">
+<ul>
+<li>Advantages: easy to estimate.</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Disavantages: assumptions may be very wrong!</li>
+</ul>
+</div>
+</div><div class="column" style="width:50%;">
+<h3 id="non-parametric">Non-Parametric</h3>
+<ol type="1">
+<li><p>Don’t make particular assumptions on the functional form of <span class="math inline">\(f\)</span>.</p></li>
+<li><p>Estimate a function that adapts smoothly to the observed data “avoiding excessive oscillations and edgy behaviours”.</p></li>
+</ol>
+<div class="fragment">
+<ul>
+<li>Advantages: can estimate effectively many functions.</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Disadvantages: need a lot of data!</li>
+</ul>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="parametric-models-for-regression" class="title-slide slide level1 center">
+<h1>Parametric Models for Regression</h1>
+
+</section>
+<section id="hypothesis-function" class="slide level2">
+<h2>Hypothesis Function</h2>
+<p>In Parametric methods, we will make assumption about the functional form of the function <span class="math inline">\(f\)</span>. In other words we assume that <span class="math inline">\(f\)</span> can be written in a particular form. We call it <strong>hypothesis function</strong>, we denote it as <span class="math inline">\(h\)</span>, and it will depend on one or more parameters.</p>
+</section>
+<section id="a-first-model-for-regression" class="slide level2">
+<h2>A First Model for Regression</h2>
+<h3 id="model">Model</h3>
+<p>A very simple model for regression is given by</p>
+<p><span class="math display">\[h(x) = \beta_0 \qquad \beta_0 \in \mathbb{R}\]</span></p>
+<h3 id="geometric-interpretation">Geometric Interpretation</h3>
+<p>What does <span class="math inline">\(h(x) = \beta_0\)</span> represents?</p>
+<h3 id="problem">Problem</h3>
+<p>How can we find the best <span class="math inline">\(\beta_0\)</span>?</p>
+</section>
+<section id="for-example" class="slide level2 smaller">
+<h2>For Example</h2>
+<div class="panel-tabset">
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Data</a></li><li><a href="#tabset-3-2">Many Solutions</a></li><li><a href="#tabset-3-3">Questions</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-19-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div id="tabset-3-2">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-20-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div id="tabset-3-3">
+<ul>
+<li><p>How do we find the “best” one?</p></li>
+<li><p>What actually best means in this context?</p></li>
+</ul>
+<p>One ingredient is still missing…</p>
+</div>
+</div>
+</div>
+</section>
+<section id="loss-or-cost-or-risk-function" class="slide level2 smaller">
+<h2>Loss (or Cost, or Risk) Function</h2>
+<p>We need a way to measure how good is our fit given the choice made on parameters. This is done using a so-called <strong>loss function</strong> the we will denote as <span class="math inline">\(\mathcal{L}(y, \hat{y})\)</span>, where <span class="math inline">\(\hat{y} = h(x)\)</span>.</p>
+<p>Basically we:</p>
+<div>
+<ol type="1">
+<li class="fragment"><p>Select a hypothesis function <span class="math inline">\(h(x)\)</span></p></li>
+<li class="fragment"><p>Make a choice for its parameters</p></li>
+<li class="fragment"><p>Predict <span class="math inline">\(\hat{y} = h(x)\)</span> for all observed <span class="math inline">\(x\)</span>’s</p></li>
+<li class="fragment"><p>Compare <span class="math inline">\(y\)</span> and <span class="math inline">\(\hat{y}\)</span> using the loss function</p></li>
+<li class="fragment"><p>Repeat 2. to 4. for many parameters choices and the select the one with minimum loss</p></li>
+</ol>
+</div>
+<div class="fragment">
+<p>This procedure is know as <strong>Empirical Risk Minimization</strong>.</p>
+</div>
+</section>
+<section id="square-loss" class="slide level2">
+<h2>Square Loss</h2>
+<p>In regression problems a common choice for the loss function is the <strong>square loss</strong>.</p>
+<p><span class="math display">\[
+\mathcal{L}(y, \hat{y}) =
+\frac{1}{2N} \sum_{i = 1}^N \left( y^{(i)} - \hat{y}^{(i)} \right)^2
+\]</span></p>
+<p>where for <span class="math inline">\(i = 1, \dots, N\)</span></p>
+<p><span class="math display">\[
+\hat{y}^{(i)} = h(x^{(i)})
+\]</span></p>
+</section>
+<section id="back-to-our-model" class="slide level2">
+<h2>Back to Our Model</h2>
+<p>Since <span class="math inline">\(\hat{y}^{(i)} = h(x^{(i)}) = \beta_0\)</span> for <span class="math inline">\(i = 1, \dots, N\)</span> then our problem is</p>
+<p><span class="math display">\[
+\min_{\beta_0} \left[ \frac{1}{2N} \sum_{i = 1}^N \left( y^{(i)} - \beta_0 \right)^2 \right]
+\]</span></p>
+<p>With some maths, pen and paper it is possible to show that the best <span class="math inline">\(\beta_0\)</span>, the one that minimizes the loss, is the average of the observed <span class="math inline">\(y\)</span>’s.</p>
+</section>
+<section id="for-example-1" class="slide level2 smaller">
+<h2>For Example</h2>
+<div class="panel-tabset">
+<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">Data</a></li><li><a href="#tabset-4-2">Brown</a></li><li><a href="#tabset-4-3">Golden</a></li><li><a href="#tabset-4-4">Orchid</a></li><li><a href="#tabset-4-5">Sea Green</a></li><li><a href="#tabset-4-6">Tomato</a></li><li><a href="#tabset-4-7">Tan</a></li><li><a href="#tabset-4-8">Best</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-21-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div id="tabset-4-2">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-22-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div id="tabset-4-3">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-23-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div id="tabset-4-4">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-24-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div id="tabset-4-5">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-25-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div id="tabset-4-6">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-26-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div id="tabset-4-7">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-27-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div id="tabset-4-8">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-28-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="a-second-model-for-regression" class="slide level2">
+<h2>A Second Model for Regression</h2>
+<h3 id="model-1">Model</h3>
+<p>A very commonly used model for regression (with one predictor) is given by</p>
+<p><span class="math display">\[h(x) = \beta_0 + \beta_1 x \qquad \beta_0, \beta_1 \in \mathbb{R}\]</span></p>
+<h3 id="geometric-interpretation-1">Geometric Interpretation</h3>
+<p>What does <span class="math inline">\(h(x) = \beta_0 + \beta_1 x\)</span> represents?</p>
+<h3 id="problem-1">Problem</h3>
+<p>How can we find the best <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>?</p>
+</section>
+<section id="for-example-2" class="slide level2 smaller">
+<h2>For Example</h2>
+<div class="panel-tabset">
+<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">Data</a></li><li><a href="#tabset-5-2">Many Solutions</a></li><li><a href="#tabset-5-3">Question</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-29-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div id="tabset-5-2">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-30-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div id="tabset-5-3">
+<p>How do we find the “best” one?</p>
+</div>
+</div>
+</div>
+</section>
+<section id="statement-of-the-problem" class="slide level2">
+<h2>Statement of the Problem</h2>
+<p>Since <span class="math inline">\(\hat{y}^{(i)} = h(x^{(i)}) = \beta_0 + \beta_1 x^{(i)}\)</span> for <span class="math inline">\(i = 1, \dots, N\)</span>, then our problem, also know as <strong>ordinary least squares</strong> (OLS), is</p>
+<p><span class="math display">\[
+\min_{\beta_0, \beta_1} \left[ \frac{1}{2N} \sum_{i = 1}^N \left( y^{(i)} - \beta_0 - \beta_1 x^{(i)} \right)^2 \right]
+\]</span></p>
+<p>Again with some maths, pen and paper it is possible to find a solution, but is not that easy to write (and to find!).</p>
+</section>
+<section id="for-example-3" class="slide level2 smaller">
+<h2>For Example</h2>
+<div class="panel-tabset">
+<ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">Data</a></li><li><a href="#tabset-6-2">Brown</a></li><li><a href="#tabset-6-3">Golden</a></li><li><a href="#tabset-6-4">Orchid</a></li><li><a href="#tabset-6-5">Sea Green</a></li><li><a href="#tabset-6-6">Tomato</a></li><li><a href="#tabset-6-7">Tan</a></li><li><a href="#tabset-6-8">Best</a></li></ul>
+<div class="tab-content">
+<div id="tabset-6-1">
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-32-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div id="tabset-6-2">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-33-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div id="tabset-6-3">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-34-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div id="tabset-6-4">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-35-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div id="tabset-6-5">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-36-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div id="tabset-6-6">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-37-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div id="tabset-6-7">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-38-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div id="tabset-6-8">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-39-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="what-if-we-have-more-predictors" class="slide level2">
+<h2>What if we have more predictors?</h2>
+<h3 id="model-2">Model</h3>
+<p>In case of more predictors, the model is of the form</p>
+<p><span class="math display">\[h(x) = \beta_0 + \beta_1 x_1 + \dots + \beta_m x_m \qquad \beta_0, \beta_1, \dots, \beta_m \in \mathbb{R}\]</span></p>
+<h3 id="geometric-interpretation-2">Geometric Interpretation</h3>
+<p>What does <span class="math inline">\(h(x) = \beta_0 + \beta_1 x_1 + \dots + \beta_m x_m\)</span> represents?</p>
+<h3 id="problem-2">Problem</h3>
+<p>How can we find the best <span class="math inline">\(\beta_0,\beta_1, \dots, \beta_m\)</span>?</p>
+</section>
+<section id="statement-of-the-problem-1" class="slide level2">
+<h2>Statement of the Problem</h2>
+<p>Since</p>
+<p><span class="math display">\[\hat{y}^{(i)} = h(x^{(i)}) = \beta_0 + \beta_1 x_1^{(i)} + \dots + \beta_m x_m^{(i)}\]</span></p>
+<p>for <span class="math inline">\(i = 1, \dots, N\)</span>, then our problem is</p>
+<p><span class="math display">\[
+\min_{\beta_0, \beta_1, \dots, \beta_m} \left[ \frac{1}{2N} \sum_{i = 1}^N \left( y^{(i)} - \beta_0 - \beta_1 x_1^{(i)} - \dots - \beta_m x_m^{(i)} \right)^2 \right]
+\]</span></p>
+</section>
+<section id="some-comments" class="slide level2 scrollable">
+<h2>Some Comments</h2>
+<div>
+<ul>
+<li class="fragment"><p>We wrote the general statement of the problem for linear regression!</p></li>
+<li class="fragment"><p>Find the best values for the parameters is a job that we let the computers do. There are algorithms that are disigned speficically for this. From a machine learning practitioner perspective we do not need to know that.</p></li>
+<li class="fragment"><p>Linear regression is <em>one</em> possible model, there are many more!</p></li>
+<li class="fragment"><p>In statistics a similar model is discussed, but there are assumption to check and other things can be said. We won’t discuss most of them.</p></li>
+</ul>
+</div>
+</section></section>
+<section>
+<section id="parametric-model-for-binary-classification" class="title-slide slide level1 center">
+<h1>Parametric Model for Binary Classification</h1>
+
+</section>
+<section id="logistic-function" class="slide level2 smaller">
+<h2>Logistic Function</h2>
+<div class="panel-tabset">
+<ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-7-1">Equation</a></li><li><a href="#tabset-7-2">Graph</a></li><li><a href="#tabset-7-3">Key Properties</a></li></ul>
+<div class="tab-content">
+<div id="tabset-7-1">
+<p><strong>Logistic</strong> (or <strong>Logit</strong>) <strong>function</strong> is defined by</p>
+<p><span class="math display">\[\sigma(x) = \frac{1}{1+e^{-x}}\]</span></p>
+<p>It is also know with the name of <strong>sigmoid function</strong>.</p>
+</div>
+<div id="tabset-7-2">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-40-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div id="tabset-7-3">
+<ul>
+<li><p>If <span class="math inline">\(x\)</span> is large positive, then <span class="math inline">\(\sigma(x) \approx 1\)</span></p></li>
+<li><p>If <span class="math inline">\(x\)</span> is large negative, then <span class="math inline">\(\sigma(x) \approx 0\)</span></p></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="logistic-regression" class="slide level2 smaller">
+<h2>Logistic Regression</h2>
+<h3 id="model-3">Model</h3>
+<p>A possible model for classification (with one predictor) is given by</p>
+<p><span class="math display">\[h(x) = \sigma(\beta_0 + \beta_1 x) = \frac{1}{1+e^{-(\beta_0 + \beta_1 x)}} \qquad \beta_0, \beta_1 \in \mathbb{R}\]</span></p>
+<h3 id="geometric-interpretation-3">Geometric Interpretation</h3>
+<p>What does <span class="math inline">\(h(x)\)</span> represents?</p>
+<h3 id="problem-3">Problem</h3>
+<p>How can we find the best <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>?</p>
+</section>
+<section id="wait-there-is-a-mistake" class="slide level2">
+<h2>Wait! There is a Mistake!</h2>
+<p>Logistic <em>regression</em> for <em>classification</em>?!?!</p>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:70%;">
+<p>The regression part in the <em>Logistic Regression</em> name derives from technical similarities with Linear Regression when estimating parameters for both models. It’s just a name,a legacy that comes from the past. However logistic regression is used only for classification.</p>
+</div><div class="column" style="width:30%;">
+<p><img data-src="Img/doc.webp"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="cross-entropy-loss" class="slide level2">
+<h2>Cross Entropy Loss</h2>
+<p>In classification problems a choice for the loss function is the <strong>cross entropy loss</strong>.</p>
+<p><span class="math display">\[
+\mathcal{L}(y, \hat{y}) =
+\frac{1}{N} \sum_{i = 1}^N -\left(y^{(i)} \log \hat{y}^{(i)} + (1 - y^{(i)}) \log (1 - \hat{y}^{(i)}) \right)
+\]</span></p>
+<p>where for <span class="math inline">\(i = 1, \dots, N\)</span></p>
+<p><span class="math display">\[
+\hat{y}^{(i)} = h(x^{(i)}) = \sigma(\beta_0 + \beta_1 x^{(i)}) = \frac{1}{1+e^{-(\beta_0 + \beta_1 x^{(i)})}}
+\]</span></p>
+</section>
+<section id="cross-entropy-loss-1" class="slide level2 smaller">
+<h2>Cross Entropy Loss?</h2>
+<p>Let’s focus on a single observation.</p>
+<div class="panel-tabset">
+<ul id="tabset-8" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-8-1"><span class="math inline">\(y = 1\)</span></a></li><li><a href="#tabset-8-2"><span class="math inline">\(y = 0\)</span></a></li></ul>
+<div class="tab-content">
+<div id="tabset-8-1">
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>If <span class="math inline">\(y = 1\)</span>, then</p>
+<p><span class="math display">\[\text{loss} = -\left(y \log \hat{y} + (1 - y) \log(1 - \hat{y}) \right)\]</span></p>
+<p>becomes</p>
+<p><span class="math display">\[\text{loss} = -\log \hat{y}\]</span></p>
+<p>Hence the loss is lower for <span class="math inline">\(\hat{y}\)</span> approaching <span class="math inline">\(1\)</span>.</p>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-41-1.png" width="960" height="250"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-8-2">
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>If <span class="math inline">\(y = 0\)</span>, then</p>
+<p><span class="math display">\[\text{loss} = -\left(y \log \hat{y} + (1 - y) \log(1 - \hat{y}) \right)\]</span></p>
+<p>becomes</p>
+<p><span class="math display">\[\text{loss} = -\log(1 - \hat{y})\]</span></p>
+<p>Hence the loss is lower for <span class="math inline">\(\hat{y}\)</span> approaching <span class="math inline">\(0\)</span>.</p>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-42-1.png" width="960" height="250"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="want-to-see-the-numbers" class="slide level2">
+<h2>Want to see the numbers?</h2>
+<div class="panel-tabset">
+<ul id="tabset-9" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-9-1"><span class="math inline">\(y = 1\)</span></a></li><li><a href="#tabset-9-2"><span class="math inline">\(y = 0\)</span></a></li></ul>
+<div class="tab-content">
+<div id="tabset-9-1">
+<p>Say we predict <span class="math inline">\(\hat{y} = 0.85\)</span> then</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span><span class="fu">log</span>(<span class="fl">0.85</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1625189</code></pre>
+</div>
+</div>
+<p>Say we predict <span class="math inline">\(\hat{y} = 0.05\)</span> then</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span><span class="fu">log</span>(<span class="fl">0.05</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.995732</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-9-2">
+<p>Say we predict <span class="math inline">\(\hat{y} = 0.85\)</span> then</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span><span class="fu">log</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.85</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.89712</code></pre>
+</div>
+</div>
+<p>Say we predict <span class="math inline">\(\hat{y} = 0.05\)</span> then</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span><span class="fu">log</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.05</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.05129329</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="for-example-4" class="slide level2 smaller">
+<h2>For Example</h2>
+<div class="panel-tabset">
+<ul id="tabset-10" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-10-1">Data</a></li><li><a href="#tabset-10-2">Brown</a></li><li><a href="#tabset-10-3">Golden</a></li><li><a href="#tabset-10-4">Orchid</a></li><li><a href="#tabset-10-5">Sea Green</a></li><li><a href="#tabset-10-6">Tomato</a></li><li><a href="#tabset-10-7">Tan</a></li><li><a href="#tabset-10-8">Best</a></li></ul>
+<div class="tab-content">
+<div id="tabset-10-1">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-47-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div id="tabset-10-2">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-48-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div id="tabset-10-3">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-49-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div id="tabset-10-4">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-50-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div id="tabset-10-5">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-51-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div id="tabset-10-6">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-52-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div id="tabset-10-7">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-53-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div id="tabset-10-8">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-54-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="why-logistic-regression" class="slide level2">
+<h2>Why Logistic Regression?</h2>
+<p>Assuming the the hypothesis function is of the form of the logistic regression may seem innatural.</p>
+<p>However there are two good features that come together with logistic regression:</p>
+<ol type="1">
+<li><p>Predictions are values between <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span>, therefore can be interpreted as probabilities</p></li>
+<li><p>Compared to linear regression, logistic regression would be less affected by outliers.</p></li>
+</ol>
+</section>
+<section id="for-example-5" class="slide level2">
+<h2>For example</h2>
+<div class="panel-tabset">
+<ul id="tabset-11" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-11-1">Data</a></li><li><a href="#tabset-11-2">Logistic</a></li><li><a href="#tabset-11-3">Linear</a></li><li><a href="#tabset-11-4">Data2</a></li><li><a href="#tabset-11-5">Logistic</a></li><li><a href="#tabset-11-6">Linear</a></li></ul>
+<div class="tab-content">
+<div id="tabset-11-1">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-55-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div id="tabset-11-2">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-56-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div id="tabset-11-3">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-57-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div id="tabset-11-4">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-58-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div id="tabset-11-5">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-59-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div id="tabset-11-6">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-60-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="so-were-done-with-the-theory" class="slide level2">
+<h2>So, we’re done with the theory?</h2>
+<p>Yes, for today! (Practical session will come after lunch)</p>
+<p>What’s next?</p>
+<p>During this course you’ll learn how to train different families of models. Then when you have a new problem, you’ll try the models you have in your toolbox and pick the best one.</p>
+<p>Should you try all of them?</p>
+</section>
+<section id="no-free-lunch-theorem" class="slide level2">
+<h2>No Free Lunch Theorem</h2>
+<p>Why should we try (and therefore learn to use) different families of functions and not try the “best” family?</p>
+<p>The <strong>No Free Lunch Theorem</strong> states that there is no one model that works best for every situation. Because the assumptions of a great model for one issue may not hold true for another, it is typical in machine learning to attempt many models to discover the one that performs best for a specific problem.</p>
+</section>
+<section id="references-practitioners-guides" class="slide level2 smaller">
+<h2>References (practitioner’s guides)</h2>
+<p>R opinionated (of course!) references:</p>
+<ul>
+<li><p>Bradley Boehmke and Brandon M. Greenwell, <em>Hands-On Machine Learning with R</em>, 2019</p></li>
+<li><p>Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani, <em>An Introduction to Statistical Learning: with Applications in R</em> (2nd Edition), 2021, <a href="https://www.statlearning.com/">free access</a></p></li>
+<li><p>Max Kuhn and Kjell Johnson, <em>Applied Predictive Modelling</em>, 2013</p></li>
+<li><p>Max Kuhn and Kjell Johnson, <em>Feature Engineering and Selection: A Practical Approach for Predictive Models</em>, 2019, <a href="http://www.feat.engineering/">free access</a></p></li>
+<li><p>Max Kuhn and Julia Silge, <em>Tidy Modeling with R</em>, 2022, <a href="https://www.tmwr.org/">free access</a></p></li>
+<li><p>Brett Lantz, <em>Machine Learning with R</em> (3rd Edition), 2019</p></li>
+</ul>
+</section>
+<section id="references-mathematical-theory" class="slide level2 smaller">
+<h2>References (mathematical theory)</h2>
+<p>If you really want to know more mathematical details. But be warned, the following are not easy readings…</p>
+<ul>
+<li><p>Luc Devroye, Gábor Lugosi, and László Györfi, <em>A Probabilistic Theory of Pattern Recognition</em>, 1996</p></li>
+<li><p>Trevor Hastie, Robert Tibshirani, and Jerome Friedman, <em>The Elements of Statistical Learning: Data Mining, Inference, and Prediction</em> (2nd Edition), 2009</p></li>
+<li><p>Shai Shalev-Shwartz and Shai Ben-David, <em>Understanding Machine Learning</em>, 2014</p></li>
+</ul>
+<div class="footer footer-default">
+<p><a href="https://filebb.github.io/NHS_intro_ML/">Fundamentals of Machine Learning for NHS using R</a> - Day 1</p>
+</div>
+</section></section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="01_Intro_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="01_Intro_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="01_Intro_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="01_Intro_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="01_Intro_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="01_Intro_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="01_Intro_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="01_Intro_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="01_Intro_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="01_Intro_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'smaller': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          // dispatch for htmlwidgets
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for reveal
+        if (window.Reveal) {
+          window.Reveal.addEventListener("slidechanged", function(event) {
+            fireSlideChanged(event.previousSlide, event.currentSlide);
+          });
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        target: function(trigger) {
+          return trigger.previousElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        setTimeout(function() {
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+      function tippyHover(el, contentFn) {
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'quarto-reveal',
+          placement: 'bottom-start'
+        };
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          let href = ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          return note.innerHTML;
+        });
+      }
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+        tippyHover(ref, function() {
+          var popup = window.document.createElement('div');
+          cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    });
+    </script>
+    
+
+</body></html>
