@@ -1247,7 +1247,7 @@
 </div>
 </section>
 <section id="what-if-we-have-more-predictors" class="slide level2">
-<h2>What if we have more predictors?</h2>
+<h2>What if We Have More Predictors?</h2>
 <h3 id="model-2">Model</h3>
 <p>In case of more predictors, the model is of the form</p>
 <p><span class="math display">\[h(x) = \beta_0 + \beta_1 x_1 + \dots + \beta_m x_m \qquad \beta_0, \beta_1, \dots, \beta_m \in \mathbb{R}\]</span></p>
@@ -1335,12 +1335,20 @@
 <p>In classification problems a choice for the loss function is the <strong>cross entropy loss</strong>.</p>
 <p><span class="math display">\[
 \mathcal{L}(y, \hat{y}) =
-\frac{1}{N} \sum_{i = 1}^N -\left(y^{(i)} \log \hat{y}^{(i)} + (1 - y^{(i)}) \log (1 - \hat{y}^{(i)}) \right)
+-\frac{1}{N} \sum_{i = 1}^N \left(y^{(i)} \log \hat{y}^{(i)} + (1 - y^{(i)}) \log (1 - \hat{y}^{(i)}) \right)
 \]</span></p>
 <p>where for <span class="math inline">\(i = 1, \dots, N\)</span></p>
 <p><span class="math display">\[
 \hat{y}^{(i)} = h(x^{(i)}) = \sigma(\beta_0 + \beta_1 x^{(i)}) = \frac{1}{1+e^{-(\beta_0 + \beta_1 x^{(i)})}}
 \]</span></p>
+</section>
+<section id="statement-of-the-problem-2" class="slide level2">
+<h2>Statement of the Problem</h2>
+<p>Since <span class="math inline">\(\hat{y}^{(i)} = h(x^{(i)}) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 x^{(i)})}}\)</span> for <span class="math inline">\(i = 1, \dots, N\)</span>, then our problem is</p>
+<p><span class="math display">\[
+\min_{\beta_0, \beta_1} \left[ -\frac{1}{N} \sum_{i = 1}^N \left(y^{(i)} \log \hat{y}^{(i)} + (1 - y^{(i)}) \log (1 - \hat{y}^{(i)}) \right) \right]
+\]</span></p>
+<p>Again with some maths, pen and paper it is possible to find a solution, but is not that easy to write (and to find!).</p>
 </section>
 <section id="cross-entropy-loss-1" class="slide level2 smaller">
 <h2>Cross Entropy Loss?</h2>
@@ -1386,7 +1394,7 @@
 </div>
 </section>
 <section id="want-to-see-the-numbers" class="slide level2">
-<h2>Want to see the numbers?</h2>
+<h2>Want to See the Numbers?</h2>
 <div class="panel-tabset">
 <ul id="tabset-9" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-9-1"><span class="math inline">\(y = 1\)</span></a></li><li><a href="#tabset-9-2"><span class="math inline">\(y = 0\)</span></a></li></ul>
 <div class="tab-content">
@@ -1548,9 +1556,23 @@
 </div>
 </div>
 </section>
+<section id="what-if-we-have-more-predictors-1" class="slide level2 smaller">
+<h2>What if We Have More Predictors?</h2>
+<h3 id="model-4">Model</h3>
+<p>In case of more predictors, the model is of the form</p>
+<p><span class="math display">\[
+\begin{multline}
+h(x) = \sigma(\beta_0 + \beta_1 x_1 + \dots + \beta_m x_m) \\
+= \frac{1}{1+e^{-(\beta_0 + \beta_1 x_1 + \dots + \beta_m x_m)}} \\
+\beta_0, \beta_1, \dots, \beta_m \in \mathbb{R}
+\end{multline}
+\]</span></p>
+<h3 id="problem-4">Problem</h3>
+<p>How can we find the best <span class="math inline">\(\beta_0,\beta_1, \dots, \beta_m\)</span>?</p>
+</section>
 <section id="so-were-done-with-the-theory" class="slide level2">
 <h2>So, we’re done with the theory?</h2>
-<p>Yes, for today! (Practical session will come after lunch)</p>
+<p>Yes! (Practical session will come after lunch)</p>
 <p>What’s next?</p>
 <p>During this course you’ll learn how to train different families of models. Then when you have a new problem, you’ll try the models you have in your toolbox and pick the best one.</p>
 <p>Should you try all of them?</p>
