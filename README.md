@@ -2,13 +2,13 @@
 
 ## Slides
 
-| Day | Slides                                                                                            |
-|:---:|:--------------------------------------------------------------------------------------------------|
-|   1 | [Introduction to Machine Learning](https://filebb.github.io/NHS_intro_ML/01_Intro.html)           |
-|   2 | [Data Preparation and Feature Engineering]https://filebb.github.io/NHS_intro_ML/02_Dataprep.html) |
-|   3 | [Regression (part 1)]()                                                                           |
-|   4 | [Classification]()                                                                                |
-|   5 | [Regression (part 2)]()                                                                           |
+| Day | Slides                                                                                             |
+|:---:|:---------------------------------------------------------------------------------------------------|
+|   1 | [Introduction to Machine Learning](https://filebb.github.io/NHS_intro_ML/01_Intro.html)            |
+|   2 | [Data Preparation and Feature Engineering](https://filebb.github.io/NHS_intro_ML/02_Dataprep.html) |
+|   3 | [Regression (part 1)]()                                                                            |
+|   4 | [Classification]()                                                                                 |
+|   5 | [Regression (part 2)]()                                                                            |
      
 
 ## Summary of the course
