@@ -1047,7 +1047,7 @@
 <p>In regression problems a common choice for the loss function is the <strong>square loss</strong>.</p>
 <p><span class="math display">\[
 \mathcal{L}(y, \hat{y}) =
-\frac{1}{2N} \sum_{i = 1}^N \left( y^{(i)} - \hat{y}^{(i)} \right)^2
+\frac{1}{N} \sum_{i = 1}^N \left( y^{(i)} - \hat{y}^{(i)} \right)^2
 \]</span></p>
 <p>where for <span class="math inline">\(i = 1, \dots, N\)</span></p>
 <p><span class="math display">\[
@@ -1058,7 +1058,7 @@
 <h2>Back to Our Model</h2>
 <p>Since <span class="math inline">\(\hat{y}^{(i)} = h(x^{(i)}) = \beta_0\)</span> for <span class="math inline">\(i = 1, \dots, N\)</span> then our problem is</p>
 <p><span class="math display">\[
-\min_{\beta_0} \left[ \frac{1}{2N} \sum_{i = 1}^N \left( y^{(i)} - \beta_0 \right)^2 \right]
+\min_{\beta_0} \left[ \frac{1}{N} \sum_{i = 1}^N \left( y^{(i)} - \beta_0 \right)^2 \right]
 \]</span></p>
 <p>With some maths, pen and paper it is possible to show that the best <span class="math inline">\(\beta_0\)</span>, the one that minimizes the loss, is the average of the observed <span class="math inline">\(y\)</span>’s.</p>
 </section>
@@ -1165,7 +1165,7 @@
 <h2>Statement of the Problem</h2>
 <p>Since <span class="math inline">\(\hat{y}^{(i)} = h(x^{(i)}) = \beta_0 + \beta_1 x^{(i)}\)</span> for <span class="math inline">\(i = 1, \dots, N\)</span>, then our problem, also know as <strong>ordinary least squares</strong> (OLS), is</p>
 <p><span class="math display">\[
-\min_{\beta_0, \beta_1} \left[ \frac{1}{2N} \sum_{i = 1}^N \left( y^{(i)} - \beta_0 - \beta_1 x^{(i)} \right)^2 \right]
+\min_{\beta_0, \beta_1} \left[ \frac{1}{N} \sum_{i = 1}^N \left( y^{(i)} - \beta_0 - \beta_1 x^{(i)} \right)^2 \right]
 \]</span></p>
 <p>Again with some maths, pen and paper it is possible to find a solution, but is not that easy to write (and to find!).</p>
 </section>
@@ -1252,7 +1252,7 @@
 <p><span class="math display">\[\hat{y}^{(i)} = h(x^{(i)}) = \beta_0 + \beta_1 x_1^{(i)} + \dots + \beta_m x_m^{(i)}\]</span></p>
 <p>for <span class="math inline">\(i = 1, \dots, N\)</span>, then our problem is</p>
 <p><span class="math display">\[
-\min_{\beta_0, \beta_1, \dots, \beta_m} \left[ \frac{1}{2N} \sum_{i = 1}^N \left( y^{(i)} - \beta_0 - \beta_1 x_1^{(i)} - \dots - \beta_m x_m^{(i)} \right)^2 \right]
+\min_{\beta_0, \beta_1, \dots, \beta_m} \left[ \frac{1}{N} \sum_{i = 1}^N \left( y^{(i)} - \beta_0 - \beta_1 x_1^{(i)} - \dots - \beta_m x_m^{(i)} \right)^2 \right]
 \]</span></p>
 </section>
 <section id="some-comments" class="slide level2 scrollable">
@@ -1260,9 +1260,9 @@
 <div>
 <ul>
 <li class="fragment"><p>We wrote the general statement of the problem for linear regression!</p></li>
-<li class="fragment"><p>Find the best values for the parameters is a job that we let the computers do. There are algorithms that are disigned speficically for this. From a machine learning practitioner perspective we do not need to know that.</p></li>
+<li class="fragment"><p>Find the best values for the parameters is a job that we let computers do. There are algorithms that are disigned speficically for this. From a machine learning practitioner perspective we do not need to know that.</p></li>
 <li class="fragment"><p>Linear regression is <em>one</em> possible model, there are many more!</p></li>
-<li class="fragment"><p>In statistics a similar model is discussed, but there are assumptions to check and other things can be said. We won’t discuss most of them.</p></li>
+<li class="fragment"><p>In “classical” statistics a similar model is discussed, but there are assumptions to check and other things can be said. We won’t discuss most of them.</p></li>
 </ul>
 </div>
 </section></section>
@@ -1313,7 +1313,7 @@
 <div class="fragment">
 <div class="columns">
 <div class="column" style="width:70%;">
-<p>The regression part in the <em>Logistic Regression</em> name derives from technical similarities with Linear Regression when estimating parameters for both models. It’s just a name,a legacy that comes from the past. However logistic regression is used only for classification.</p>
+<p>The regression part in the <em>Logistic Regression</em> name derives from technical similarities with Linear Regression when estimating parameters for both models. It’s just a name, a legacy that comes from the past. However logistic regression is used only for classification.</p>
 </div><div class="column" style="width:30%;">
 <p><img data-src="Img/doc.webp"></p>
 </div>
