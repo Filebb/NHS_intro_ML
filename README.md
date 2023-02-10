@@ -8,7 +8,7 @@
 |   2 | [Data Preparation and Feature Engineering](https://filebb.github.io/NHS_intro_ML/02_Dataprep.html) |
 |   3 | [Regression (part 1)](https://filebb.github.io/NHS_intro_ML/03_Regression_part1.html)              |
 |   4 | [Classification](https://filebb.github.io/NHS_intro_ML/04_Classification.html)                     |
-|   5 | [Regression (part 2)](https://filebb.github.io/NHS_intro_ML/02_Regression_part2.html)              |
+|   5 | [Regression (part 2)](https://filebb.github.io/NHS_intro_ML/05_Regression_part2.html)              |
 
 ## Summary of the course
 
