@@ -1268,7 +1268,7 @@
 <h2>LASSO Regression</h2>
 <p>The <strong>LASSO</strong> (<em>least absolute shrinkage and selection operator</em>) penalty asks to solve the following problem</p>
 <p><span class="math display">\[
-\min_{\beta} \left[ \frac{1}{N} \sum_{i = 1}^N \left( y^{(i)} - \hat{y}^{(i)} \right)^2 + \lambda \sum_{j = 1}^p  |\beta_j| \right]
+\min_{\beta} \left[ \frac{1}{N} \sum_{i = 1}^N \left( y^{(i)} - \hat{y}^{(i)} \right)^2 + \lambda \sum_{j = 1}^m  |\beta_j| \right]
 \]</span></p>
 <div>
 <ul>
@@ -1288,7 +1288,7 @@
 <h2>Ridge Regression</h2>
 <p>The <strong>Ridge</strong> penalty asks to solve the following problem</p>
 <p><span class="math display">\[
-\min_{\beta} \left[ \frac{1}{N} \sum_{i = 1}^N \left( y^{(i)} - \hat{y}^{(i)} \right)^2 + \lambda \sum_{j = 1}^p  \beta_j^2 \right]
+\min_{\beta} \left[ \frac{1}{N} \sum_{i = 1}^N \left( y^{(i)} - \hat{y}^{(i)} \right)^2 + \lambda \sum_{j = 1}^m  \beta_j^2 \right]
 \]</span></p>
 <div>
 <ul>
@@ -1308,7 +1308,7 @@
 <h2>Elastic Net</h2>
 <p>Combines both LASSO and Ridge penalties</p>
 <p><span class="math display">\[
-\min_{\beta} \left[ \frac{1}{N} \sum_{i = 1}^N \left( y^{(i)} - \hat{y}^{(i)} \right)^2 + \lambda_1 \sum_{j = 1}^p  |\beta_j| + \lambda_2 \sum_{j = 1}^p  \beta_j^2 \right]
+\min_{\beta} \left[ \frac{1}{N} \sum_{i = 1}^N \left( y^{(i)} - \hat{y}^{(i)} \right)^2 + \lambda_1 \sum_{j = 1}^m  |\beta_j| + \lambda_2 \sum_{j = 1}^m  \beta_j^2 \right]
 \]</span></p>
 <div>
 <ul>
@@ -1320,7 +1320,7 @@
 <section id="elastic-net-another-way-of-writing-it" class="slide level2 smaller">
 <h2>Elastic Net another way of writing it</h2>
 <p><span class="math display">\[
-\min_{\beta} \left[ \frac{1}{N} \sum_{i = 1}^N \left( y^{(i)} - \hat{y}^{(i)} \right)^2 + \lambda \left( \alpha \sum_{j = 1}^p  |\beta_j| + (1 - \alpha) \sum_{j = 1}^p  \beta_j^2 \right)\right]
+\min_{\beta} \left[ \frac{1}{N} \sum_{i = 1}^N \left( y^{(i)} - \hat{y}^{(i)} \right)^2 + \lambda \left( \alpha \sum_{j = 1}^m  |\beta_j| + (1 - \alpha) \sum_{j = 1}^m  \beta_j^2 \right)\right]
 \]</span></p>
 <div>
 <ul>
