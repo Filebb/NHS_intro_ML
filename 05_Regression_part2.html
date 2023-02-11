@@ -1217,24 +1217,40 @@
 <section id="review-of-linear-regression" class="slide level2">
 <h2>Review of Linear Regression</h2>
 <h3 id="model">Model</h3>
-<p><span class="math display">\[h(x) = \beta_0 + \beta_1 x_1 + \dots + \beta_m x_m \qquad \beta_0, \beta_1, \dots, \beta_m \in \mathbb{R}\]</span></p>
+<p><span class="math display">\[
+h(x) = \beta_0 + \beta_1 x_1 + \dots + \beta_m x_m \qquad
+\beta_0, \beta_1, \dots, \beta_m \in \mathbb{R}
+\]</span></p>
 <h3 id="problem">Problem</h3>
 <p>How can we find the best <span class="math inline">\(\beta_0,\beta_1, \dots, \beta_m\)</span>?</p>
 </section>
 <section id="statement-of-the-problem" class="slide level2">
 <h2>Statement of the Problem</h2>
 <p>Since</p>
-<p><span class="math display">\[\hat{y}^{(i)} = h(x^{(i)}) = \beta_0 + \beta_1 x_1^{(i)} + \dots + \beta_m x_m^{(i)}\]</span></p>
+<p><span class="math display">\[
+\hat{y}^{(i)} = h(x^{(i)}) =
+\beta_0 + \beta_1 x_1^{(i)} + \dots + \beta_m x_m^{(i)}
+\]</span></p>
 <p>for <span class="math inline">\(i = 1, \dots, N\)</span>, then our problem is</p>
 <p><span class="math display">\[
-\min_{\beta_0, \beta_1, \dots, \beta_m} \left[ \frac{1}{N} \sum_{i = 1}^N \left( y^{(i)} - \beta_0 - \beta_1 x_1^{(i)} - \dots - \beta_m x_m^{(i)} \right)^2 \right]
+\min_{\beta_0, \beta_1, \dots, \beta_m}
+\left[
+    \frac{1}{N} \sum_{i = 1}^N
+        \left(
+            y^{(i)} - \beta_0 - \beta_1 x_1^{(i)} - \dots - \beta_m x_m^{(i)}
+        \right)^2
+\right]
 \]</span></p>
 </section>
 <section id="we-can-rewrite-the-problem-as" class="slide level2">
 <h2>We can rewrite the problem as</h2>
 <p>Let <span class="math inline">\(\beta = \left( \beta_0, \beta_1, \dots, \beta_m \right)\)</span>. Then we want to find</p>
 <p><span class="math display">\[
-\min_{\beta} \left[ \frac{1}{N} \sum_{i = 1}^N \left( y^{(i)} - \hat{y}^{(i)} \right)^2 \right]
+\min_{\beta}
+    \left[
+        \frac{1}{N} \sum_{i = 1}^N
+            \left( y^{(i)} - \hat{y}^{(i)} \right)^2
+    \right]
 \]</span></p>
 </section>
 <section id="cross-validation" class="slide level2">
@@ -1253,7 +1269,7 @@
 <h2>Regularisation: a possible solution</h2>
 <ul>
 <li><p>Regularized regression provides an approach to constrain the total size of coefficient estimates</p></li>
-<li><p>Constraints helps to reduce the magnitude and fluctuations fo the coefficients and will reduce the variance of the model</p></li>
+<li><p>Constraints helps to reduce the magnitude and fluctuations of the coefficients and will reduce the variance of the model</p></li>
 <li><p>This results in more stable coefficients and model performance</p></li>
 </ul>
 </section>
@@ -1261,14 +1277,22 @@
 <h2>How?</h2>
 <p>A Regularized regression model has a loss function of the form</p>
 <p><span class="math display">\[
-\min_{\beta} \left[ \frac{1}{N} \sum_{i = 1}^N \left( y^{(i)} - \hat{y}^{(i)} \right)^2 + \text{penalty} \right]
+\min_{\beta}
+    \left[
+        \frac{1}{N} \sum_{i = 1}^N \left( y^{(i)} - \hat{y}^{(i)} \right)^2 +
+        \text{penalty}
+    \right]
 \]</span></p>
 </section>
 <section id="lasso-regression" class="slide level2 smaller">
 <h2>LASSO Regression</h2>
 <p>The <strong>LASSO</strong> (<em>least absolute shrinkage and selection operator</em>) penalty asks to solve the following problem</p>
 <p><span class="math display">\[
-\min_{\beta} \left[ \frac{1}{N} \sum_{i = 1}^N \left( y^{(i)} - \hat{y}^{(i)} \right)^2 + \lambda \sum_{j = 1}^m  |\beta_j| \right]
+\min_{\beta}
+    \left[
+        \frac{1}{N} \sum_{i = 1}^N \left( y^{(i)} - \hat{y}^{(i)} \right)^2 +
+        \lambda \sum_{j = 1}^m  |\beta_j|
+    \right]
 \]</span></p>
 <div>
 <ul>
@@ -1288,7 +1312,11 @@
 <h2>Ridge Regression</h2>
 <p>The <strong>Ridge</strong> penalty asks to solve the following problem</p>
 <p><span class="math display">\[
-\min_{\beta} \left[ \frac{1}{N} \sum_{i = 1}^N \left( y^{(i)} - \hat{y}^{(i)} \right)^2 + \lambda \sum_{j = 1}^m  \beta_j^2 \right]
+\min_{\beta}
+    \left[
+        \frac{1}{N} \sum_{i = 1}^N \left( y^{(i)} - \hat{y}^{(i)} \right)^2 +
+        \lambda \sum_{j = 1}^m  \beta_j^2
+    \right]
 \]</span></p>
 <div>
 <ul>
@@ -1308,7 +1336,12 @@
 <h2>Elastic Net</h2>
 <p>Combines both LASSO and Ridge penalties</p>
 <p><span class="math display">\[
-\min_{\beta} \left[ \frac{1}{N} \sum_{i = 1}^N \left( y^{(i)} - \hat{y}^{(i)} \right)^2 + \lambda_1 \sum_{j = 1}^m  |\beta_j| + \lambda_2 \sum_{j = 1}^m  \beta_j^2 \right]
+\min_{\beta}
+\left[
+    \frac{1}{N} \sum_{i = 1}^N \left( y^{(i)} - \hat{y}^{(i)} \right)^2 +
+    \lambda_1 \sum_{j = 1}^m  |\beta_j| +
+    \lambda_2 \sum_{j = 1}^m  \beta_j^2
+\right]
 \]</span></p>
 <div>
 <ul>
@@ -1320,18 +1353,30 @@
 <section id="elastic-net-another-way-of-writing-it" class="slide level2 smaller">
 <h2>Elastic Net another way of writing it</h2>
 <p><span class="math display">\[
-\min_{\beta} \left[ \frac{1}{N} \sum_{i = 1}^N \left( y^{(i)} - \hat{y}^{(i)} \right)^2 + \lambda \left( \alpha \sum_{j = 1}^m  |\beta_j| + (1 - \alpha) \sum_{j = 1}^m  \beta_j^2 \right)\right]
+\min_{\beta}
+    \left[
+        \frac{1}{N} \sum_{i = 1}^N \left( y^{(i)} - \hat{y}^{(i)} \right)^2 +
+        \lambda
+            \left(
+                \alpha \sum_{j = 1}^m  |\beta_j| +
+                (1 - \alpha) \sum_{j = 1}^m  \beta_j^2
+            \right)
+    \right]
 \]</span></p>
-<div>
 <ul>
-<li class="fragment"><p>Size of penalty is controlled by <span class="math inline">\(\lambda\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\alpha\)</span>, called <strong>mixture</strong>, is such that <span class="math inline">\(0 \leq \alpha \leq 1\)</span>:</p>
+<li><p>Size of penalty is controlled by <span class="math inline">\(\lambda\)</span></p></li>
+<li><p><span class="math inline">\(\alpha\)</span>, called <strong>mixture</strong>, is such that <span class="math inline">\(0 \leq \alpha \leq 1\)</span>:</p>
 <ul>
-<li class="fragment">For <span class="math inline">\(\alpha = 0\)</span> we have Ridge penalty</li>
-<li class="fragment">For <span class="math inline">\(\alpha = 1\)</span> we have LASSO penalty</li>
+<li>For <span class="math inline">\(\alpha = 0\)</span> we have Ridge penalty (<span class="math inline">\(\lambda = \lambda_2\)</span>)</li>
+<li>For <span class="math inline">\(\alpha = 1\)</span> we have LASSO penalty (<span class="math inline">\(\lambda = \lambda_1\)</span>)</li>
+<li>For <span class="math inline">\(0 &lt; \alpha &lt; 1\)</span> we have a mix of the two penalties and</li>
 </ul></li>
 </ul>
-</div>
+<p><span class="math display">\[
+\lambda = \lambda_1 + \lambda_2 \qquad
+\alpha = \frac{\lambda_1}{\lambda_1 + \lambda_2} \qquad
+1 - \alpha = \frac{\lambda_2}{\lambda_1 + \lambda_2}
+\]</span></p>
 </section></section>
 <section>
 <section id="workshop-5-elastic-net" class="title-slide slide level1 center">
