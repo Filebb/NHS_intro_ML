@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-  <meta charset="utf-8">
-  <meta name="generator" content="quarto-0.9.483">
+<script src="01_Intro_files/libs/clipboard/clipboard.min.js"></script>
+<script src="01_Intro_files/libs/quarto-html/tabby.min.js"></script>
+<script src="01_Intro_files/libs/quarto-html/popper.min.js"></script>
+<script src="01_Intro_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="01_Intro_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="01_Intro_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="01_Intro_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.2.335">
 
   <title>Introduction to Machine Learning</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -12,10 +18,15 @@
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
     pre > code.sourceCode { white-space: pre; position: relative; }
     pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -42,43 +53,44 @@
         -khtml-user-select: none; -moz-user-select: none;
         -ms-user-select: none; user-select: none;
         padding: 0 4px; width: 4em;
-        color: #aaaaaa;
       }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
     div.sourceCode
-      {   }
+      { color: #657b83; background-color: #fdf6e3; }
     @media screen {
     pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
     }
-    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-    code span.at { color: #7d9029; } /* Attribute */
-    code span.bn { color: #40a070; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #4070a0; } /* Char */
-    code span.cn { color: #880000; } /* Constant */
-    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-    code span.dt { color: #902000; } /* DataType */
-    code span.dv { color: #40a070; } /* DecVal */
-    code span.er { color: #ff0000; font-weight: bold; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #40a070; } /* Float */
-    code span.fu { color: #06287e; } /* Function */
-    code span.im { } /* Import */
-    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-    code span.op { color: #666666; } /* Operator */
-    code span.ot { color: #007020; } /* Other */
-    code span.pp { color: #bc7a00; } /* Preprocessor */
-    code span.sc { color: #4070a0; } /* SpecialChar */
-    code span.ss { color: #bb6688; } /* SpecialString */
-    code span.st { color: #4070a0; } /* String */
-    code span.va { color: #19177c; } /* Variable */
-    code span.vs { color: #4070a0; } /* VerbatimString */
-    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    code span { color: #657b83; } /* Normal */
+    code span.al { color: #d33682; font-weight: bold; } /* Alert */
+    code span.an { color: #268bd2; } /* Annotation */
+    code span.at { color: #268bd2; } /* Attribute */
+    code span.bn { color: #2aa198; } /* BaseN */
+    code span.bu { color: #cb4b16; } /* BuiltIn */
+    code span.cf { color: #859900; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #2aa198; } /* Char */
+    code span.cn { color: #2aa198; font-weight: bold; } /* Constant */
+    code span.co { color: #93a1a1; font-style: italic; } /* Comment */
+    code span.cv { color: #2aa198; } /* CommentVar */
+    code span.do { color: #dc322f; } /* Documentation */
+    code span.dt { color: #b58900; font-weight: bold; } /* DataType */
+    code span.dv { color: #2aa198; } /* DecVal */
+    code span.er { color: #dc322f; text-decoration: underline; } /* Error */
+    code span.ex { color: #268bd2; font-weight: bold; } /* Extension */
+    code span.fl { color: #2aa198; } /* Float */
+    code span.fu { color: #268bd2; } /* Function */
+    code span.im { color: #2aa198; } /* Import */
+    code span.in { color: #b58900; } /* Information */
+    code span.kw { color: #859900; font-weight: bold; } /* Keyword */
+    code span.op { color: #859900; } /* Operator */
+    code span.ot { color: #859900; } /* Other */
+    code span.pp { color: #cb4b16; } /* Preprocessor */
+    code span.re { color: #268bd2; background-color: #eee8d5; } /* RegionMarker */
+    code span.sc { color: #dc322f; } /* SpecialChar */
+    code span.ss { color: #dc322f; } /* SpecialString */
+    code span.st { color: #2aa198; } /* String */
+    code span.va { color: #268bd2; } /* Variable */
+    code span.vs { color: #2aa198; } /* VerbatimString */
+    code span.wa { color: #cb4b16; } /* Warning */
   </style>
   <link rel="stylesheet" href="01_Intro_files/libs/revealjs/dist/theme/quarto.css" id="theme">
   <link href="01_Intro_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -369,23 +381,19 @@
       margin-right: 0; 
     }
   </style>
-<script src="01_Intro_files\libs\clipboard\clipboard.min.js"></script>
-<script src="01_Intro_files\libs\quarto-html\tabby.min.js"></script>
-<script src="01_Intro_files\libs\quarto-html\popper.min.js"></script>
-<script src="01_Intro_files\libs\quarto-html\tippy.umd.min.js"></script>
-<link href="01_Intro_files\libs\quarto-html\tippy.css" rel="stylesheet">
-<link href="01_Intro_files\libs\quarto-html\quarto-html.min.css" rel="stylesheet">
-<link href="01_Intro_files\libs\quarto-html\quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 </head>
-<body>
+<body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="center">
+<section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Introduction to Machine Learning</h1>
   <p class="subtitle">Fundamentals of Machine Learning for NHS using R</p>
-</section>
 
+<div class="quarto-title-authors">
+</div>
+
+</section>
 <section>
 <section id="what-is-machine-learning" class="title-slide slide level1 center">
 <h1>What is Machine Learning?</h1>
@@ -477,9 +485,13 @@
 </div></aside></section>
 <section id="alphago-2016" class="slide level2 scrollable smaller">
 <h2>AlphaGo (2016)</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Img/alpha_go.jpg"></p>
+</figure>
+</div>
 
-
-<img data-src="Img/alpha_go.jpg" class="r-stretch quarto-figure-center"><aside><div>
+<aside><div>
 <p>References:</p>
 <ul>
 <li><p>BBC News, <a href="https://www.bbc.co.uk/news/technology-35785875">Artificial intelligence: Google’s AlphaGo beats Go master Lee Se-dol</a></p></li>
@@ -520,9 +532,9 @@
 </div></aside></section>
 <section id="section" class="slide level2">
 <h2></h2>
+<p><img data-src="Img/algorithms_data_features.jpg"></p>
 
-
-<img data-src="Img/algorithms_data_features.jpg" class="r-stretch"><aside><div>
+<aside><div>
 <p>Image Credit: Vasily Zubarev, <a href="https://vas3k.com/blog/machine_learning/">Machine Learning for Everyone</a></p>
 </div></aside></section>
 <section id="section-1" class="slide level2">
@@ -621,9 +633,13 @@
 </div></aside></section>
 <section id="section-2" class="slide level2 scrollable">
 <h2></h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Img/types_of_machine_learning.jpg"></p>
+</figure>
+</div>
 
-
-<img data-src="Img/types_of_machine_learning.jpg" class="r-stretch quarto-figure-center"><aside><div>
+<aside><div>
 <p>Image Credit: Vasily Zubarev, <a href="https://vas3k.com/blog/machine_learning/">Machine Learning for Everyone</a></p>
 </div></aside></section>
 <section id="supervised-vs-unsupervised-learning" class="slide level2">
@@ -1824,12 +1840,15 @@ h(x) = \sigma(\beta_0 + \beta_1 x_1 + \dots + \beta_m x_m) \\
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
       // slide changes (different for each slide format).
       (function () {
-        function fireSlideChanged(previousSlide, currentSlide) {
-
-          // dispatch for htmlwidgets
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
           const event = window.document.createEvent("Event");
           event.initEvent("slideenter", true, true);
           window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
 
           // dispatch for shiny
           if (window.jQuery) {
@@ -1840,13 +1859,6 @@ h(x) = \sigma(\beta_0 + \beta_1 x_1 + \dots + \beta_m x_m) \\
               window.jQuery(currentSlide).trigger("shown");
             }
           }
-        }
-
-        // hookup for reveal
-        if (window.Reveal) {
-          window.Reveal.addEventListener("slidechanged", function(event) {
-            fireSlideChanged(event.previousSlide, event.currentSlide);
-          });
         }
 
         // hookup for slidy
@@ -1862,6 +1874,24 @@ h(x) = \sigma(\beta_0 + \beta_1 x_1 + \dots + \beta_m x_m) \\
 
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
       const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
       tabsets.forEach(function(tabset) {
         const tabby = new Tabby('#' + tabset.id);
@@ -1880,7 +1910,24 @@ h(x) = \sigma(\beta_0 + \beta_1 x_1 + \dots + \beta_m x_m) \\
         button.classList.add('code-copy-button-checked');
         var currentTitle = button.getAttribute("title");
         button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
         setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
           button.setAttribute("title", currentTitle);
           button.classList.remove('code-copy-button-checked');
         }, 1000);
@@ -1910,31 +1957,50 @@ h(x) = \sigma(\beta_0 + \beta_1 x_1 + \dots + \beta_m x_m) \\
       for (var i=0; i<noterefs.length; i++) {
         const ref = noterefs[i];
         tippyHover(ref, function() {
-          let href = ref.getAttribute('href');
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
           return note.innerHTML;
         });
       }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
       var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
       for (var i=0; i<bibliorefs.length; i++) {
         const ref = bibliorefs[i];
-        const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-        tippyHover(ref, function() {
-          var popup = window.document.createElement('div');
-          cites.forEach(function(cite) {
-            var citeDiv = window.document.createElement('div');
-            citeDiv.classList.add('hanging-indent');
-            citeDiv.classList.add('csl-entry');
-            var biblioDiv = window.document.getElementById('ref-' + cite);
-            if (biblioDiv) {
-              citeDiv.innerHTML = biblioDiv.innerHTML;
-            }
-            popup.appendChild(citeDiv);
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
           });
-          return popup.innerHTML;
-        });
+        }
       }
     });
     </script>
