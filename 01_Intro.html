@@ -1043,7 +1043,7 @@
 </section>
 <section id="loss-or-cost-or-risk-function" class="slide level2 smaller">
 <h2>Loss (or Cost, or Risk) Function</h2>
-<p>We need a way to measure how good is our fit given the choice made on parameters. This is done using a so-called <strong>loss function</strong> the we will denote as <span class="math inline">\(\mathcal{L}(y, \hat{y})\)</span>, where <span class="math inline">\(\hat{y} = h(x)\)</span>.</p>
+<p>We need a way to measure how good is our fit given the choice made on parameters. This is done using a so-called <strong>loss function</strong> the we will denote as <span class="math inline">\(\mathcal{L}(\hat{y}, y)\)</span>, where <span class="math inline">\(\hat{y} = h(x)\)</span>.</p>
 <p>Basically we:</p>
 <div>
 <ol type="1">
@@ -1062,8 +1062,8 @@
 <h2>Square Loss</h2>
 <p>In regression problems a common choice for the loss function is the <strong>square loss</strong>.</p>
 <p><span class="math display">\[
-\mathcal{L}(y, \hat{y}) =
-\frac{1}{N} \sum_{i = 1}^N \left( y^{(i)} - \hat{y}^{(i)} \right)^2
+\mathcal{L}(\hat{y}, y) =
+\frac{1}{N} \sum_{i = 1}^N \left( \hat{y}^{(i)} - y^{(i)} \right)^2
 \]</span></p>
 <p>where for <span class="math inline">\(i = 1, \dots, N\)</span></p>
 <p><span class="math display">\[
@@ -1074,7 +1074,7 @@
 <h2>Back to Our Model</h2>
 <p>Since <span class="math inline">\(\hat{y}^{(i)} = h(x^{(i)}) = \beta_0\)</span> for <span class="math inline">\(i = 1, \dots, N\)</span> then our problem is</p>
 <p><span class="math display">\[
-\min_{\beta_0} \left[ \frac{1}{N} \sum_{i = 1}^N \left( y^{(i)} - \beta_0 \right)^2 \right]
+\min_{\beta_0} \left[ \frac{1}{N} \sum_{i = 1}^N \left( \beta_0 - y^{(i)} \right)^2 \right]
 \]</span></p>
 <p>With some maths, pen and paper it is possible to show that the best <span class="math inline">\(\beta_0\)</span>, the one that minimizes the loss, is the average of the observed <span class="math inline">\(y\)</span>’s.</p>
 </section>
@@ -1181,7 +1181,7 @@
 <h2>Statement of the Problem</h2>
 <p>Since <span class="math inline">\(\hat{y}^{(i)} = h(x^{(i)}) = \beta_0 + \beta_1 x^{(i)}\)</span> for <span class="math inline">\(i = 1, \dots, N\)</span>, then our problem, also know as <strong>ordinary least squares</strong> (OLS), is</p>
 <p><span class="math display">\[
-\min_{\beta_0, \beta_1} \left[ \frac{1}{N} \sum_{i = 1}^N \left( y^{(i)} - \beta_0 - \beta_1 x^{(i)} \right)^2 \right]
+\min_{\beta_0, \beta_1} \left[ \frac{1}{N} \sum_{i = 1}^N \left( \beta_0 + \beta_1 x^{(i)} - y^{(i)} \right)^2 \right]
 \]</span></p>
 <p>Again with some maths, pen and paper it is possible to find a solution, but is not that easy to write (and to find!).</p>
 </section>
@@ -1268,7 +1268,7 @@
 <p><span class="math display">\[\hat{y}^{(i)} = h(x^{(i)}) = \beta_0 + \beta_1 x_1^{(i)} + \dots + \beta_m x_m^{(i)}\]</span></p>
 <p>for <span class="math inline">\(i = 1, \dots, N\)</span>, then our problem is</p>
 <p><span class="math display">\[
-\min_{\beta_0, \beta_1, \dots, \beta_m} \left[ \frac{1}{N} \sum_{i = 1}^N \left( y^{(i)} - \beta_0 - \beta_1 x_1^{(i)} - \dots - \beta_m x_m^{(i)} \right)^2 \right]
+\min_{\beta_0, \beta_1, \dots, \beta_m} \left[ \frac{1}{N} \sum_{i = 1}^N \left( \beta_0 + \beta_1 x_1^{(i)} + \dots + \beta_m x_m^{(i)} - y^{(i)} \right)^2 \right]
 \]</span></p>
 </section>
 <section id="some-comments" class="slide level2 scrollable">
@@ -1340,7 +1340,7 @@
 <h2>Cross Entropy Loss</h2>
 <p>In classification problems a choice for the loss function is the <strong>cross entropy loss</strong>.</p>
 <p><span class="math display">\[
-\mathcal{L}(y, \hat{y}) =
+\mathcal{L}(\hat{y}, y) =
 -\frac{1}{N} \sum_{i = 1}^N \left(y^{(i)} \log \hat{y}^{(i)} + (1 - y^{(i)}) \log (1 - \hat{y}^{(i)}) \right)
 \]</span></p>
 <p>where for <span class="math inline">\(i = 1, \dots, N\)</span></p>
