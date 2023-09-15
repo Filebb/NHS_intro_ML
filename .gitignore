@@ -7,3 +7,5 @@
 03_Regression_part1.qmd
 04_Classification.qmd
 05_Regression_part2.qmd
+linear_regression.R
+logistic_regression.R

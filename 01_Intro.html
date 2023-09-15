@@ -1269,11 +1269,124 @@
 <div>
 <ul>
 <li class="fragment"><p>We wrote the general statement of the problem for linear regression!</p></li>
-<li class="fragment"><p>Find the best values for the parameters is a job that we let computers do. There are algorithms that are disigned speficically for this. From a machine learning practitioner perspective we do not need to know that.</p></li>
 <li class="fragment"><p>Linear regression is <em>one</em> possible model, there are many more!</p></li>
 <li class="fragment"><p>In “classical” statistics a similar model is discussed, but there are assumptions to check and other things can be said. We won’t discuss most of them.</p></li>
 </ul>
 </div>
+</section></section>
+<section>
+<section id="there-is-still-an-outstanding-question" class="title-slide slide level1 center">
+<h1>There is still an outstanding question!</h1>
+<p>How can we find the best parameters?</p>
+</section>
+<section id="gradient-descent" class="slide level2">
+<h2>Gradient Descent</h2>
+
+<img data-src="img/gradient_descent.png" class="r-stretch quarto-figure-center"><p>The idea is to start from a random point and then update our approximation of the <span class="math inline">\(x\)</span>-coordinate of the minimum by going opposite of the direction of the gradient at that point</p>
+</section>
+<section id="simulation" class="slide level2">
+<h2>Simulation</h2>
+
+<img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-41-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<section id="simulation-results" class="slide level2">
+<h2>Simulation Results</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>First 10 iterations</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 4
+   epoch   b_0    b_1  loss
+   &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
+ 1     1  40   -10    1431.
+ 2     2  40.3  -6.50  591.
+ 3     3  40.3  -5.26  487.
+ 4     4  40.1  -4.81  471.
+ 5     5  40.0  -4.63  465.
+ 6     6  39.7  -4.55  461.
+ 7     7  39.5  -4.50  456.
+ 8     8  39.3  -4.46  452.
+ 9     9  39.1  -4.42  447.
+10    10  38.9  -4.39  443.</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<p>Last 10 iterations</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 4
+   epoch   b_0   b_1  loss
+   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1  1991 -3.11  2.02  2.32
+ 2  1992 -3.11  2.02  2.32
+ 3  1993 -3.11  2.02  2.32
+ 4  1994 -3.11  2.02  2.32
+ 5  1995 -3.11  2.02  2.32
+ 6  1996 -3.11  2.02  2.32
+ 7  1997 -3.11  2.02  2.32
+ 8  1998 -3.11  2.02  2.32
+ 9  1999 -3.11  2.02  2.32
+10  2000 -3.11  2.02  2.32</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="simulation-n-1" class="slide level2">
+<h2>Simulation <span class="math inline">\(n = 1\)</span></h2>
+
+<img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-44-1.png" width="960" class="r-stretch"></section>
+<section id="simulation-n-2" class="slide level2">
+<h2>Simulation <span class="math inline">\(n = 2\)</span></h2>
+
+<img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-45-1.png" width="960" class="r-stretch"></section>
+<section id="simulation-n-3" class="slide level2">
+<h2>Simulation <span class="math inline">\(n = 3\)</span></h2>
+
+<img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-46-1.png" width="960" class="r-stretch"></section>
+<section id="simulation-n-10" class="slide level2">
+<h2>Simulation <span class="math inline">\(n = 10\)</span></h2>
+
+<img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-47-1.png" width="960" class="r-stretch"></section>
+<section id="simulation-n-20" class="slide level2">
+<h2>Simulation <span class="math inline">\(n = 20\)</span></h2>
+
+<img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-48-1.png" width="960" class="r-stretch"></section>
+<section id="simulation-n-30" class="slide level2">
+<h2>Simulation <span class="math inline">\(n = 30\)</span></h2>
+
+<img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-49-1.png" width="960" class="r-stretch"></section>
+<section id="simulation-n-100" class="slide level2">
+<h2>Simulation <span class="math inline">\(n = 100\)</span></h2>
+
+<img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-50-1.png" width="960" class="r-stretch"></section>
+<section id="simulation-n-200" class="slide level2">
+<h2>Simulation <span class="math inline">\(n = 200\)</span></h2>
+
+<img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-51-1.png" width="960" class="r-stretch"></section>
+<section id="simulation-n-300" class="slide level2">
+<h2>Simulation <span class="math inline">\(n = 300\)</span></h2>
+
+<img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-52-1.png" width="960" class="r-stretch"></section>
+<section id="simulation-n-500" class="slide level2">
+<h2>Simulation <span class="math inline">\(n = 500\)</span></h2>
+
+<img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-53-1.png" width="960" class="r-stretch"></section>
+<section id="simulation-n-1000" class="slide level2">
+<h2>Simulation <span class="math inline">\(n = 1000\)</span></h2>
+
+<img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-54-1.png" width="960" class="r-stretch"></section>
+<section id="simulation-n-1500" class="slide level2">
+<h2>Simulation <span class="math inline">\(n = 1500\)</span></h2>
+
+<img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-55-1.png" width="960" class="r-stretch"></section>
+<section id="simulation-n-2000" class="slide level2">
+<h2>Simulation <span class="math inline">\(n = 2000\)</span></h2>
+
+<img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-56-1.png" width="960" class="r-stretch"></section>
+<section id="a-comment-on-gradient-descent" class="slide level2">
+<h2>A Comment on Gradient Descent</h2>
+<p>Find the best values for the parameters is a job that we let computers do. From a machine learning practitioner perspective having an idea of how gradient descent works is enough: you don’t need to know all the mathematical details.</p>
 </section></section>
 <section>
 <section id="parametric-model-for-binary-classification" class="title-slide slide level1 center">
@@ -1293,7 +1406,7 @@
 <div id="tabset-7-2">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-41-1.png" width="960"></p>
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-57-1.png" width="960"></p>
 </div>
 </div>
 </div>
@@ -1368,7 +1481,7 @@
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-42-1.png" width="960" height="250"></p>
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-58-1.png" width="960" height="250"></p>
 </div>
 </div>
 </div>
@@ -1385,7 +1498,7 @@
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-43-1.png" width="960" height="250"></p>
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-59-1.png" width="960" height="250"></p>
 </div>
 </div>
 </div>
@@ -1402,14 +1515,14 @@
 <div id="tabset-9-1">
 <p>Say we predict <span class="math inline">\(\hat{y} = 0.85\)</span> then</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span><span class="fu">log</span>(<span class="fl">0.85</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span><span class="fu">log</span>(<span class="fl">0.85</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1625189</code></pre>
 </div>
 </div>
 <p>Say we predict <span class="math inline">\(\hat{y} = 0.05\)</span> then</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span><span class="fu">log</span>(<span class="fl">0.05</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span><span class="fu">log</span>(<span class="fl">0.05</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.995732</code></pre>
 </div>
@@ -1418,14 +1531,14 @@
 <div id="tabset-9-2">
 <p>Say we predict <span class="math inline">\(\hat{y} = 0.85\)</span> then</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span><span class="fu">log</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.85</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span><span class="fu">log</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.85</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.89712</code></pre>
 </div>
 </div>
 <p>Say we predict <span class="math inline">\(\hat{y} = 0.05\)</span> then</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span><span class="fu">log</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.05</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span><span class="fu">log</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.05</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.05129329</code></pre>
 </div>
@@ -1442,56 +1555,56 @@
 <div id="tabset-10-1">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-48-1.png" width="960"></p>
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-64-1.png" width="960"></p>
 </div>
 </div>
 </div>
 <div id="tabset-10-2">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-49-1.png" width="960"></p>
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-65-1.png" width="960"></p>
 </div>
 </div>
 </div>
 <div id="tabset-10-3">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-50-1.png" width="960"></p>
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-66-1.png" width="960"></p>
 </div>
 </div>
 </div>
 <div id="tabset-10-4">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-51-1.png" width="960"></p>
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-67-1.png" width="960"></p>
 </div>
 </div>
 </div>
 <div id="tabset-10-5">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-52-1.png" width="960"></p>
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-68-1.png" width="960"></p>
 </div>
 </div>
 </div>
 <div id="tabset-10-6">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-53-1.png" width="960"></p>
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-69-1.png" width="960"></p>
 </div>
 </div>
 </div>
 <div id="tabset-10-7">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-54-1.png" width="960"></p>
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-70-1.png" width="960"></p>
 </div>
 </div>
 </div>
 <div id="tabset-10-8">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-55-1.png" width="960"></p>
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-71-1.png" width="960"></p>
 </div>
 </div>
 </div>
@@ -1515,42 +1628,42 @@
 <div id="tabset-11-1">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-56-1.png" width="960"></p>
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-72-1.png" width="960"></p>
 </div>
 </div>
 </div>
 <div id="tabset-11-2">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-57-1.png" width="960"></p>
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-73-1.png" width="960"></p>
 </div>
 </div>
 </div>
 <div id="tabset-11-3">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-58-1.png" width="960"></p>
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-74-1.png" width="960"></p>
 </div>
 </div>
 </div>
 <div id="tabset-11-4">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-59-1.png" width="960"></p>
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-75-1.png" width="960"></p>
 </div>
 </div>
 </div>
 <div id="tabset-11-5">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-60-1.png" width="960"></p>
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-76-1.png" width="960"></p>
 </div>
 </div>
 </div>
 <div id="tabset-11-6">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-61-1.png" width="960"></p>
+<p><img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-77-1.png" width="960"></p>
 </div>
 </div>
 </div>
@@ -1571,12 +1684,136 @@ h(x) = \sigma(\beta_0 + \beta_1 x_1 + \dots + \beta_m x_m) \\
 <h3 id="problem-4">Problem</h3>
 <p>How can we find the best <span class="math inline">\(\beta_0,\beta_1, \dots, \beta_m\)</span>?</p>
 </section>
+<section id="simulation-for-logistic-regression" class="slide level2">
+<h2>Simulation for Logistic Regression</h2>
+
+<img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-78-1.png" width="960" class="r-stretch quarto-figure-center"></section>
+<section id="simulation-results-1" class="slide level2">
+<h2>Simulation Results</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>First 10 iterations</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 4
+   epoch   b_0   b_1 cross_entropy
+   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;
+ 1     1  7    -8             12.9
+ 2     2  6.99 -7.97          12.8
+ 3     3  6.99 -7.95          12.8
+ 4     4  6.98 -7.92          12.7
+ 5     5  6.98 -7.89          12.7
+ 6     6  6.97 -7.86          12.7
+ 7     7  6.97 -7.84          12.6
+ 8     8  6.96 -7.81          12.6
+ 9     9  6.96 -7.78          12.6
+10    10  6.95 -7.76          12.5</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<p>Last 10 iterations</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 4
+   epoch   b_0   b_1 cross_entropy
+   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;
+ 1  4991 -1.64  3.45         0.121
+ 2  4992 -1.64  3.45         0.121
+ 3  4993 -1.64  3.45         0.121
+ 4  4994 -1.64  3.45         0.121
+ 5  4995 -1.64  3.45         0.121
+ 6  4996 -1.64  3.45         0.121
+ 7  4997 -1.64  3.45         0.121
+ 8  4998 -1.64  3.45         0.121
+ 9  4999 -1.64  3.45         0.121
+10  5000 -1.64  3.45         0.121</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="simulation-n-1-1" class="slide level2">
+<h2>Simulation <span class="math inline">\(n = 1\)</span></h2>
+
+<img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-81-1.png" width="960" class="r-stretch"></section>
+<section id="simulation-n-2-1" class="slide level2">
+<h2>Simulation <span class="math inline">\(n = 2\)</span></h2>
+
+<img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-82-1.png" width="960" class="r-stretch"></section>
+<section id="simulation-n-3-1" class="slide level2">
+<h2>Simulation <span class="math inline">\(n = 3\)</span></h2>
+
+<img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-83-1.png" width="960" class="r-stretch"></section>
+<section id="simulation-n-10-1" class="slide level2">
+<h2>Simulation <span class="math inline">\(n = 10\)</span></h2>
+
+<img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-84-1.png" width="960" class="r-stretch"></section>
+<section id="simulation-n-20-1" class="slide level2">
+<h2>Simulation <span class="math inline">\(n = 20\)</span></h2>
+
+<img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-85-1.png" width="960" class="r-stretch"></section>
+<section id="simulation-n-30-1" class="slide level2">
+<h2>Simulation <span class="math inline">\(n = 30\)</span></h2>
+
+<img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-86-1.png" width="960" class="r-stretch"></section>
+<section id="simulation-n-100-1" class="slide level2">
+<h2>Simulation <span class="math inline">\(n = 100\)</span></h2>
+
+<img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-87-1.png" width="960" class="r-stretch"></section>
+<section id="simulation-n-200-1" class="slide level2">
+<h2>Simulation <span class="math inline">\(n = 200\)</span></h2>
+
+<img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-88-1.png" width="960" class="r-stretch"></section>
+<section id="simulation-n-300-1" class="slide level2">
+<h2>Simulation <span class="math inline">\(n = 300\)</span></h2>
+
+<img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-89-1.png" width="960" class="r-stretch"></section>
+<section id="simulation-n-500-1" class="slide level2">
+<h2>Simulation <span class="math inline">\(n = 500\)</span></h2>
+
+<img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-90-1.png" width="960" class="r-stretch"></section>
+<section id="simulation-n-1000-1" class="slide level2">
+<h2>Simulation <span class="math inline">\(n = 1000\)</span></h2>
+
+<img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-91-1.png" width="960" class="r-stretch"></section>
+<section id="simulation-n-1500-1" class="slide level2">
+<h2>Simulation <span class="math inline">\(n = 1500\)</span></h2>
+
+<img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-92-1.png" width="960" class="r-stretch"></section>
+<section id="simulation-n-2000-1" class="slide level2">
+<h2>Simulation <span class="math inline">\(n = 2000\)</span></h2>
+
+<img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-93-1.png" width="960" class="r-stretch"></section>
+<section id="simulation-n-2500" class="slide level2">
+<h2>Simulation <span class="math inline">\(n = 2500\)</span></h2>
+
+<img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-94-1.png" width="960" class="r-stretch"></section>
+<section id="simulation-n-3000" class="slide level2">
+<h2>Simulation <span class="math inline">\(n = 3000\)</span></h2>
+
+<img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-95-1.png" width="960" class="r-stretch"></section>
+<section id="simulation-n-3500" class="slide level2">
+<h2>Simulation <span class="math inline">\(n = 3500\)</span></h2>
+
+<img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-96-1.png" width="960" class="r-stretch"></section>
+<section id="simulation-n-4000" class="slide level2">
+<h2>Simulation <span class="math inline">\(n = 4000\)</span></h2>
+
+<img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-97-1.png" width="960" class="r-stretch"></section>
+<section id="simulation-n-4500" class="slide level2">
+<h2>Simulation <span class="math inline">\(n = 4500\)</span></h2>
+
+<img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-98-1.png" width="960" class="r-stretch"></section>
+<section id="simulation-n-5000" class="slide level2">
+<h2>Simulation <span class="math inline">\(n = 5000\)</span></h2>
+
+<img data-src="01_Intro_files/figure-revealjs/unnamed-chunk-99-1.png" width="960" class="r-stretch"></section>
 <section id="so-were-done-with-the-theory" class="slide level2">
 <h2>So, we’re done with the theory?</h2>
-<p>Yes! (Practical session will come after lunch)</p>
-<p>What’s next?</p>
+<p>Yes!</p>
+<h3 id="whats-next">What’s next?</h3>
 <p>During this course you’ll learn how to train different families of models. Then when you have a new problem, you’ll try the models you have in your toolbox and pick the best one.</p>
-<p>Should you try all of them?</p>
+<h3 id="question-should-you-try-all-of-them">Question: should you try all of them?</h3>
 </section>
 <section id="no-free-lunch-theorem" class="slide level2">
 <h2>No Free Lunch Theorem</h2>
