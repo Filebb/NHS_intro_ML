@@ -9,7 +9,7 @@
 | Day | Slides                                                                                             |
 |:---:|:---------------------------------------------------------------------------------------------------|
 |   1 | [Introduction to Machine Learning](https://filebb.github.io/NHS_intro_ML/01_Intro.html)            |
-|   2 | [Linear Regression]()                |
+|   2 | [Linear Regression](https://filebb.github.io/NHS_intro_ML/02_Regression.html)                      |
 |   3 | [Data Preparation]()                 |
 |   4 | [Feature Engineering]()              |
 |   5 | [Classification]()                   |
