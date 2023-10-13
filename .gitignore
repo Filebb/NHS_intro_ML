@@ -4,7 +4,7 @@
 .Ruserdata
 01_Intro.qmd
 02_Regression.qmd
-02_Dataprep.qmd
+03_Dataprep.qmd
 04_Classification.qmd
 05_Regression_part2.qmd
 linear_regression.R
