@@ -6,12 +6,12 @@
 
 ## Slides
 
-| Day | Slides                                                                                  |
-|:---:|:----------------------------------------------------------------------------------------|
-|   1 | [Introduction to Machine Learning](https://filebb.github.io/NHS_intro_ML/01_Intro.html) |
-|   2 | [Linear Regression](https://filebb.github.io/NHS_intro_ML/02_Regression.html)           |
-|   3 | [Data Preparation](https://filebb.github.io/NHS_intro_ML/03_Dataprep.html)              |
-|   4 | [Feature Engineering]()              |
+| Day | Slides                                                                                   |
+|:---:|:-----------------------------------------------------------------------------------------|
+|   1 | [Introduction to Machine Learning](https://filebb.github.io/NHS_intro_ML/01_Intro.html)  |
+|   2 | [Linear Regression](https://filebb.github.io/NHS_intro_ML/02_Regression.html)            |
+|   3 | [Data Preparation](https://filebb.github.io/NHS_intro_ML/03_Dataprep.html)               |
+|   4 | [Feature Engineering](https://filebb.github.io/NHS_intro_ML/04_Feature Engineering.html) |
 |   5 | [Classification]()                   |
 |   6 | [Classification using Tree Models]() |
 |   7 | [Regression using Tree Models]()     |

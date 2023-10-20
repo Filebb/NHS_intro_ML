@@ -5,6 +5,7 @@
 01_Intro.qmd
 02_Regression.qmd
 03_Dataprep.qmd
+04_Feature Engineering.qmd
 04_Classification.qmd
 05_Regression_part2.qmd
 linear_regression.R
