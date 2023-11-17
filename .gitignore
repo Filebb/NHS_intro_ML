@@ -9,7 +9,7 @@
 04_Classification.qmd
 05_Classification_part1.qmd
 06_Classification_part2.qmd
-07_Regression_Trees.qmd
+07_Regularisation.qmd
 08_Intro_Regularisation.qmd
 linear_regression.R
 logistic_regression.R
