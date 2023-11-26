@@ -14,8 +14,8 @@
 |   4 | [Feature Engineering](https://filebb.github.io/NHS_intro_ML/04_Feature_Engineering.html)               |
 |   5 | [Classification](https://filebb.github.io/NHS_intro_ML/05_Classification_part1.html)                   |
 |   6 | [Classification using Tree Models](https://filebb.github.io/NHS_intro_ML/06_Classification_part2.html) |
-|   8 | [Introduction to Regularisation](https://filebb.github.io/NHS_intro_ML/07_Regularisation.html)         |
-|   7 | [Regression using Tree Models]()     |
+|   7 | [Introduction to Regularisation](https://filebb.github.io/NHS_intro_ML/07_Regularisation.html)         |
+|   8 | [Regression using Tree Models]()     |
 
 
 
